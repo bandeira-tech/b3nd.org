@@ -1,0 +1,67 @@
+/* ============================================================
+ * b3nd brand · canonical font serving
+ * ------------------------------------------------------------
+ * Authoring:
+ *   <p>You ship faster with <b-3>b3nd</b-3>.</p>
+ *
+ * The digit "3" inside <b-3> or .b3nd is swapped for the logo
+ * glyph via unicode-range fallback. The surrounding letters use
+ * the prose font stack of the host page. b3nd.js then wraps each
+ * letter in a span and applies the D5 locked treatment to the 3
+ * (scale 137 %, hang 0.27 em).
+ *
+ * Override the prose font by setting --b3nd-prose on a parent:
+ *   :root { --b3nd-prose: "Inter", system-ui, sans-serif; }
+ *
+ * Override the 3's locked treatment (rare — usually scoped):
+ *   .small-label b-3 { --b3nd-3-scale: 100%; --b3nd-3-hang: 0em; }
+ *
+ * Decision ledger: see /DECISIONS.md
+ *   D1 — logo is the digit 3, set in American Typewriter
+ *   D2 — display variations restyle the b/n/d around the fixed 3
+ *   D3 — prose setting: lowercase b3nd, mid-sentence
+ *   D4 — never bold, never italic (one cut, one weight)
+ *   D5 — the 3 sets at 137 % and hangs 0.27 em below baseline
+ * ============================================================ */
+
+@font-face {
+  font-family: "b3nd-logo";
+  font-style: normal;
+  font-weight: 400;            /* D4 — one cut only */
+  font-display: swap;
+  src: local("American Typewriter"),
+       local("AmericanTypewriter");
+  unicode-range: U+0033;       /* the digit "3" */
+}
+
+/* Locked treatment values from D5. Exposed as variables so a
+ * specific surface can opt out (e.g. tight UI label) without
+ * redefining defaults globally. */
+:where(b-3, .b3nd) {
+  --b3nd-3-scale: 137%;
+  --b3nd-3-hang:  0.27em;
+}
+
+/* :where() keeps specificity at zero so authors can deliberately
+ * override per page, while still getting safe defaults everywhere. */
+:where(b-3, .b3nd) {
+  font-family: "b3nd-logo", var(--b3nd-prose, inherit);
+  font-weight: 400;            /* D4 — block inherited bold */
+  font-style: normal;          /* D4 — block inherited italic */
+  font-synthesis: none;        /* D4 — block faux-bold/faux-italic */
+  font-variant-numeric: lining-nums;
+  -webkit-font-smoothing: inherit;
+}
+
+/* Per-letter spans created by brand/b3nd.js on connection.
+ * Standalone-mark <b-3>3</b-3> is NOT wrapped (D5: the hang is a
+ * wordmark property, not a glyph property). */
+:where(b-3) .b3nd-3 {
+  display: inline-block;
+  font-size: var(--b3nd-3-scale);
+  transform: translateY(var(--b3nd-3-hang));
+  /* color, weight, style all inherited — the 3 never gets a special color */
+}
+:where(b-3) .b3nd-letter {
+  /* the b, n, d (and any other surrounding letters) — D2 variation target */
+}
