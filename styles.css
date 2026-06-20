@@ -49,8 +49,13 @@
  *  D6 — single mix ratio fails AA on one side of gamma. We tune
  *  per-mode. D7 — primary accent differs per surface (green dark,
  *  pink-deep light).
+ *
+ *  Defaults are DARK — the brand's canonical surface. Light is
+ *  an opt-in override via html[data-mode="light"]. This prevents
+ *  any OS-pref / browser-extension / automation tooling from
+ *  flipping us to light by mutating data-mode unexpectedly.
  * ============================================================ */
-html[data-mode="dark"] {
+html {
   color-scheme: dark;
   --bg:        var(--black);
   --ink:       var(--white);
@@ -313,30 +318,38 @@ b-3 { font-weight: 400; font-style: normal; font-synthesis: none; }
 }
 .cell {
   width: 100%;
-  max-width: 380px;
+  max-width: 460px;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);
   position: relative;
   background:
     radial-gradient(120% 80% at 50% 20%,
       color-mix(in srgb, var(--bg), var(--ink) 0%) 0%,
-      color-mix(in srgb, var(--bg), var(--ink) 8%) 70%);
+      color-mix(in srgb, var(--bg), var(--ink) 10%) 80%);
   border: 1px solid var(--rule);
   overflow: hidden;
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--ink), transparent 92%) inset,
+    0 30px 60px -30px color-mix(in srgb, var(--accent), transparent 86%);
 }
-.cell::before {
-  /* horizon glow accent */
-  content: "";
-  position: absolute; inset: 0;
-  background:
-    linear-gradient(180deg,
-      transparent 0%,
-      transparent 64%,
-      color-mix(in srgb, var(--accent), transparent 88%) 65%,
-      transparent 67%);
-  pointer-events: none;
+.cell-tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  background: color-mix(in srgb, var(--bg), transparent 12%);
+  backdrop-filter: blur(8px);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  z-index: 2;
 }
-.cell-svg { width: 100%; height: 100%; }
+.cell-tag .dot.live { width: 6px; height: 6px; }
+.cell-svg { width: 100%; height: 100%; display: block; }
 .cell-svg .edge {
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
@@ -346,6 +359,18 @@ b-3 { font-weight: 400; font-style: normal; font-synthesis: none; }
 .cell-svg .edge-2 { animation-delay: 1.4s; }
 .cell-svg .edge-3 { animation-delay: 1.9s; }
 @keyframes trace { to { stroke-dashoffset: 0; } }
+.cell-svg .rig-glow {
+  transform-origin: 200px 180px;
+  animation: rig-breathe 5.2s var(--ease-out) infinite;
+}
+@keyframes rig-breathe {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.07); }
+}
+.cell-svg .pulse { opacity: 0.95; }
+@media (prefers-reduced-motion: reduce) {
+  .cell-svg .pulse, .cell-svg .rig-glow { animation: none; }
+}
 
 /* hero marquee */
 .hero-marquee {
@@ -701,6 +726,164 @@ b-3 { font-weight: 400; font-style: normal; font-synthesis: none; }
 }
 
 /* ============================================================
+ *  CODE LOOK
+ * ============================================================ */
+.code-look {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(80px, 10vw, 140px) var(--pad);
+}
+.code-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+@media (max-width: 880px) { .code-grid { grid-template-columns: 1fr; } }
+.code-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.code-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px dashed var(--rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.code-tag {
+  color: var(--accent);
+}
+.code-file {
+  color: var(--ink-mute);
+}
+.code-card pre {
+  margin: 0;
+  padding: 22px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--ink);
+  overflow-x: auto;
+  background: var(--bg);
+}
+.code-install {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  margin-top: 28px;
+}
+@media (max-width: 980px) { .code-install { grid-template-columns: 1fr; } }
+.ci-cell {
+  padding: 18px 20px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--panel);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.ci-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--ink-mute);
+}
+.ci-cmd {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
+  word-break: break-all;
+}
+
+/* ============================================================
+ *  AGENTS — slim accent band
+ * ============================================================ */
+.agents {
+  position: relative;
+  padding: clamp(80px, 9vw, 120px) var(--pad);
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--accent), transparent 96%) 0%,
+      transparent 100%),
+    color-mix(in srgb, var(--bg), var(--ink) 3%);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.agents-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+.agents-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+.agents-title {
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 600;
+  letter-spacing: -.025em;
+  line-height: 1.04;
+  margin: 0 0 24px;
+  max-width: 18ch;
+}
+.agents-title em {
+  font-style: normal;
+  color: var(--accent);
+}
+.agents-lede {
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: var(--ink-dim);
+  line-height: 1.55;
+  margin: 0 0 56px;
+  max-width: 64ch;
+}
+.agents-rail {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+  border-top: 1px dashed var(--rule);
+  padding-top: 32px;
+}
+@media (max-width: 880px) { .agents-rail { grid-template-columns: 1fr; } }
+.agents-r {
+  display: flex; flex-direction: column; gap: 8px;
+}
+.agents-r .ar-num {
+  font-family: var(--mono);
+  font-size: 18px;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.agents-r h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -.005em;
+}
+.agents-r p {
+  font-size: 14px;
+  color: var(--ink-dim);
+  line-height: 1.55;
+  margin: 0;
+}
+.agents-r code {
+  font-family: var(--mono);
+  font-size: 0.9em;
+  color: var(--ink);
+  background: var(--accent-soft);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ============================================================
  *  PROOF
  * ============================================================ */
 .proof-grid {
@@ -944,24 +1127,12 @@ a.proof-card { color: inherit; }
 .foot-meta .motto { color: var(--accent); }
 
 /* ============================================================
- *  REVEAL ON SCROLL
+ *  RESPECT REDUCE-MOTION
  * ============================================================ */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .8s var(--ease-out), transform .8s var(--ease-out);
-}
-[data-reveal].is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* respect reduce-motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
-  [data-reveal] { opacity: 1; transform: none; }
   .hero-h1 .word { opacity: 1; transform: none; }
 }

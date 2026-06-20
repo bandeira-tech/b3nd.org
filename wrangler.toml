@@ -3,10 +3,7 @@ pages_build_output_dir = "."
 compatibility_date = "2025-06-01"
 compatibility_flags = ["nodejs_compat"]
 
-# KV namespace for early-signal email capture.
-# Bind via dashboard or `wrangler pages project create` after first deploy:
-#   wrangler kv namespace create SIGNUPS
-# Then add the resulting id below and re-deploy.
-# [[kv_namespaces]]
-# binding = "SIGNUPS"
-# id = "..."
+# KV namespace for early-signal email capture
+[[kv_namespaces]]
+binding = "SIGNUPS"
+id = "c9bad80405e44a138f208e405a513f91"
