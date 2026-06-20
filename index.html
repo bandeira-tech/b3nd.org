@@ -20,17 +20,17 @@
   })();
 </script>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>b3nd — build, share, own.</title>
-<meta name="description" content="b3nd is the framework for apps that ship in an afternoon, stay yours forever, and pay you back when the network earns. Three verbs, ten storage backends, four transports, one Rig — by bandeira.tech.">
+<title>b3nd · digital spellcraft</title>
+<meta name="description" content="b3nd is digital spellcraft — a new architecture for apps in the age of agents. Three verbs at the protocol, three at the app, one Rig, ten storage backends, a public network running today.">
 <meta name="theme-color" content="#050807">
-<meta property="og:title" content="b3nd — build, share, own.">
-<meta property="og:description" content="The framework for apps that ship in an afternoon, stay yours forever, and pay you back when the network earns.">
+<meta property="og:title" content="b3nd is digital spellcraft.">
+<meta property="og:description" content="A new architecture for apps in the age of agents. Three verbs at the protocol, three at the app, one Rig — by bandeira.tech.">
 <meta property="og:url" content="https://b3nd.org">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://b3nd.org/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="b3nd — Build. Share. Own. The data-first framework.">
+<meta property="og:image:alt" content="b3nd is digital spellcraft.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://b3nd.org/og.png">
 
@@ -42,8 +42,8 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "b3nd",
-  "alternateName": "b3nd — build, share, own.",
-  "description": "b3nd is the framework for apps that ship in an afternoon, stay yours forever, and pay you back when the network earns. Three verbs (receive, read, observe) over a uniform surface — across ten storage backends and four transports.",
+  "alternateName": "b3nd is digital spellcraft.",
+  "description": "b3nd is a data substrate for apps in the age of agents. A small uniform surface — move, save, send at the protocol layer, receive, read, observe at the app layer — over a public network running today.",
   "applicationCategory": "DeveloperApplication",
   "operatingSystem": "Cross-platform",
   "url": "https://b3nd.org",
@@ -59,693 +59,428 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap">
 <link rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap">
 
-<!-- Critical CSS — first paint without waiting on styles.css. Keeps the
-     dark surface + hero typography stable, avoids any FOUC flash. -->
+<!-- Critical CSS — first paint without waiting on styles.css. Owns the
+     v10 surface entirely; styles.css still loaded for chrome bits. -->
 <style>
-  :root{--bg:#050807;--ink:#FFFCF8;--accent:#39FF88;
+  :root{
+    --bg:#050807; --ink:#FFFCF8; --ink-mute:#9aa39c;
+    --accent:#39FF88; --accent-deep:#0FA855; --accent-mute:#1e3127;
+    --rule:#1a2420;
     --mono:"JetBrains Mono",ui-monospace,monospace;
-    --prose:"Inter",system-ui,sans-serif;}
+    --prose:"Inter",system-ui,sans-serif;
+    --display:"Newsreader",Georgia,serif;
+  }
   html{color-scheme:dark;background:var(--bg);}
-  html[data-mode="light"]{color-scheme:light;background:#FFFCF8;}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--prose);
-    -webkit-font-smoothing:antialiased;}
+  html[data-mode="light"]{color-scheme:light;background:#FFFCF8;
+    --bg:#FFFCF8; --ink:#0a0e0c; --ink-mute:#5b6863; --rule:#e7e2d8;
+    --accent:#0FA855; --accent-deep:#0a7a3e; --accent-mute:#e0f5e8;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--prose); -webkit-font-smoothing:antialiased;
+    line-height:1.5;}
   *{box-sizing:border-box;}
+  a{color:inherit;}
+  em{font-style:italic;}
+
+  /* ── v10 chrome ─────────────────────────────────────────────── */
+  .v10-head{
+    position:fixed; top:0; left:0; right:0; z-index:20;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 28px;
+    background:rgba(5,8,7,0.82);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    border-bottom:1px solid rgba(255,252,248,0.04);
+  }
+  html[data-mode="light"] .v10-head{
+    background:rgba(255,252,248,0.85);
+    border-bottom-color:rgba(10,14,12,0.06);
+  }
+  /* The wordmark must never break mid-name. */
+  b-3{white-space:nowrap; display:inline-block;}
+  .v10-brand{
+    font-family:var(--mono); font-size:14px; letter-spacing:0.1em;
+    text-decoration:none; color:var(--ink);
+  }
+  .v10-brand b-3{color:var(--accent); font-weight:600;}
+  .v10-nav{display:flex; gap:24px; align-items:center;
+    font-family:var(--mono); font-size:12px; letter-spacing:0.08em;}
+  .v10-nav a{text-decoration:none; color:var(--ink-mute); transition:color .18s;}
+  .v10-nav a:hover{color:var(--ink);}
+  .v10-mode{
+    appearance:none; background:transparent; border:1px solid var(--rule);
+    color:var(--ink-mute); font-family:var(--mono); font-size:10px;
+    letter-spacing:0.12em; padding:6px 10px; border-radius:999px;
+    cursor:pointer; transition:border-color .18s, color .18s;
+  }
+  .v10-mode:hover{border-color:var(--ink); color:var(--ink);}
+
+  /* anchor scrolling must clear the fixed nav */
+  .beat, .spell-hero{scroll-margin-top:80px;}
+
+  /* ── HERO ───────────────────────────────────────────────────── */
+  .spell-hero{
+    min-height:100vh; display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    padding:120px 24px 80px; text-align:center; position:relative;
+  }
+  .spell-h1{
+    font-family:var(--display); font-weight:300; font-style:italic;
+    font-size:clamp(40px, 7.4vw, 96px);
+    line-height:1.05; letter-spacing:-0.01em;
+    margin:0; max-width:18ch; color:var(--ink);
+  }
+  .spell-h1 b-3{
+    font-style:normal; font-weight:400; color:var(--accent);
+    font-family:var(--display); letter-spacing:0;
+  }
+  .spell-scroll{
+    position:absolute; bottom:48px; left:50%; transform:translateX(-50%);
+    font-family:var(--mono); font-size:18px; color:var(--ink-mute);
+    text-decoration:none; opacity:0.7;
+    animation:scrollHint 2.4s ease-in-out infinite;
+  }
+  @keyframes scrollHint{
+    0%, 100%{transform:translate(-50%, 0); opacity:0.4;}
+    50%{transform:translate(-50%, 8px); opacity:0.9;}
+  }
+
+  /* ── BEAT shell ─────────────────────────────────────────────── */
+  .beat{
+    padding:120px 24px;
+    max-width:1100px; margin:0 auto;
+  }
+  .beat-narrow{max-width:780px;}
+  .beat-center{text-align:center;}
+  .beat-line{
+    font-family:var(--display); font-weight:300; font-style:italic;
+    font-size:clamp(28px, 4.2vw, 56px); line-height:1.15;
+    margin:0; color:var(--ink);
+  }
+  .beat-line em{color:var(--accent); font-style:italic;}
+
+  /* ── BEAT 1 — shape ─────────────────────────────────────────── */
+  .beat-shape{
+    min-height:60vh; display:flex; align-items:center; justify-content:center;
+    text-align:center;
+  }
+
+  /* ── BEAT 2/3 — trinity rows ────────────────────────────────── */
+  .trinity-intro{
+    font-family:var(--display); font-style:italic; font-weight:300;
+    font-size:clamp(20px, 2.4vw, 28px); color:var(--ink-mute);
+    margin:0 0 48px; text-align:center; max-width:38ch;
+    margin-left:auto; margin-right:auto;
+  }
+  /* In display-italic bodies, plain <em> disappears.
+     Swap to accent color so emphasis still reads. */
+  .trinity-intro em,
+  .beat-line em,
+  .own-line em,
+  .arch-line em{ color:var(--accent); font-style:italic; }
+  .trinity-list{
+    list-style:none; padding:0; margin:0;
+    display:flex; flex-direction:column; gap:32px;
+  }
+  .trinity-row{
+    display:grid; grid-template-columns:180px 1fr; gap:32px;
+    align-items:baseline;
+    padding:24px 0; border-top:1px solid var(--rule);
+  }
+  .trinity-row:last-child{border-bottom:1px solid var(--rule);}
+  .trinity-verb{
+    font-family:var(--mono); font-size:clamp(28px, 3.4vw, 44px);
+    font-weight:500; color:var(--accent); letter-spacing:-0.01em;
+  }
+  .trinity-line{
+    font-size:clamp(17px, 1.6vw, 21px); line-height:1.5;
+    color:var(--ink);
+  }
+  @media (max-width:680px){
+    .trinity-row{grid-template-columns:1fr; gap:8px; padding:20px 0;}
+  }
+
+  /* ── BEAT 4 — pivot ─────────────────────────────────────────── */
+  .beat-pivot{text-align:center;}
+  .pivot-stack{
+    display:flex; flex-direction:column; gap:18px;
+    font-family:var(--display); font-weight:300;
+    font-size:clamp(24px, 3.4vw, 44px); line-height:1.18;
+    color:var(--ink);
+  }
+  .pivot-stack em{color:var(--accent); font-style:italic;}
+  .pivot-coda{
+    margin:72px auto 0; max-width:32ch;
+    font-family:var(--prose); font-size:clamp(17px, 1.7vw, 22px);
+    color:var(--ink-mute); line-height:1.55;
+  }
+
+  /* ── BEAT 5 — proof ─────────────────────────────────────────── */
+  .proof-head{
+    text-align:center; margin-bottom:56px;
+    font-family:var(--display); font-style:italic; font-weight:300;
+    font-size:clamp(22px, 2.6vw, 32px); color:var(--ink-mute);
+  }
+  .proof-head em{color:var(--accent); font-style:italic;}
+  .proof-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:18px;
+  }
+  .proof-card{
+    display:block; padding:24px; border:1px solid var(--rule);
+    border-radius:14px; text-decoration:none; color:var(--ink);
+    background:transparent; transition:border-color .2s, transform .2s;
+  }
+  .proof-card:hover{border-color:var(--accent); transform:translateY(-2px);}
+  .proof-tag{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11px; letter-spacing:0.12em;
+    color:var(--ink-mute); margin-bottom:18px; text-transform:uppercase;
+  }
+  .dot{width:7px; height:7px; border-radius:50%; background:var(--ink-mute);
+    display:inline-block;}
+  .dot.live{background:var(--accent); box-shadow:0 0 12px var(--accent);}
+  .proof-card h3{
+    margin:0 0 10px; font-family:var(--prose); font-weight:600;
+    font-size:19px; color:var(--ink);
+  }
+  .proof-card p{
+    margin:0 0 18px; font-size:14.5px; line-height:1.5;
+    color:var(--ink-mute);
+  }
+  .proof-link{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.06em;
+    color:var(--accent);
+  }
+  .proof-link.soon{color:var(--ink-mute);}
+
+  /* ── BEAT 6 — arch ──────────────────────────────────────────── */
+  .beat-arch{
+    text-align:center; padding-top:80px; padding-bottom:80px;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    margin:60px auto;
+  }
+  .arch-label{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.18em;
+    text-transform:uppercase; color:var(--accent);
+    margin:0 0 24px;
+  }
+  .arch-line{
+    font-family:var(--display); font-weight:300; font-style:italic;
+    font-size:clamp(22px, 2.8vw, 34px); line-height:1.3;
+    color:var(--ink); margin:0 auto 32px; max-width:38ch;
+  }
+  .arch-cta{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.08em;
+    color:var(--accent); text-decoration:none;
+    border-bottom:1px solid var(--accent-mute);
+    padding-bottom:3px; transition:border-color .18s;
+  }
+  .arch-cta:hover{border-color:var(--accent);}
+
+  /* ── BEAT 7 — ownership ─────────────────────────────────────── */
+  .beat-own{max-width:680px;}
+  .own-line{
+    font-family:var(--display); font-style:italic; font-weight:300;
+    font-size:clamp(28px, 4vw, 48px); line-height:1.15;
+    margin:0 0 36px; color:var(--ink);
+  }
+  .beat-own p{
+    font-size:clamp(17px, 1.6vw, 20px); line-height:1.65;
+    color:var(--ink); margin:0 0 22px; max-width:60ch;
+  }
+  .beat-own em{color:var(--accent); font-style:italic;}
+
+  /* ── BEAT 8 — audiences ─────────────────────────────────────── */
+  .audience-grid{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+    gap:18px;
+  }
+  .aud-card{
+    padding:28px 24px; border:1px solid var(--rule); border-radius:14px;
+    transition:border-color .2s;
+  }
+  .aud-card:hover{border-color:var(--accent);}
+  .aud-tag{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.12em;
+    color:var(--ink-mute); margin-bottom:18px; text-transform:lowercase;
+  }
+  .aud-card h3{
+    margin:0 0 12px; font-family:var(--display); font-weight:300;
+    font-style:italic; font-size:22px; line-height:1.25; color:var(--ink);
+  }
+  .aud-card p{
+    margin:0; font-size:15px; line-height:1.5; color:var(--ink-mute);
+  }
+
+  /* ── BEAT 9 — community + door in ───────────────────────────── */
+  .beat-community{text-align:center; max-width:780px;}
+  .beat-community .com-lines{
+    font-size:clamp(17px, 1.6vw, 19px); line-height:1.7;
+    color:var(--ink); margin:0 auto 14px; max-width:54ch;
+  }
+  .beat-community .com-coda{
+    font-family:var(--display); font-style:italic; font-weight:300;
+    font-size:clamp(20px, 2.2vw, 28px); color:var(--accent);
+    margin:32px auto 56px; max-width:36ch;
+  }
+  .door-form{
+    display:flex; gap:8px; max-width:480px; margin:0 auto;
+    flex-wrap:wrap; justify-content:center;
+  }
+  .door-input{
+    flex:1; min-width:240px;
+    background:transparent; border:1px solid var(--rule); border-radius:999px;
+    padding:14px 22px; font-family:var(--prose); font-size:15px;
+    color:var(--ink); transition:border-color .18s;
+  }
+  .door-input:focus{outline:none; border-color:var(--accent);}
+  .door-input::placeholder{color:var(--ink-mute);}
+  .door-btn{
+    background:var(--accent); color:var(--bg);
+    border:none; border-radius:999px;
+    padding:14px 28px; font-family:var(--prose); font-weight:600; font-size:15px;
+    cursor:pointer; transition:transform .12s, box-shadow .18s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .door-btn:hover{transform:translateY(-1px); box-shadow:0 6px 24px rgba(57,255,136,0.25);}
+  .door-note{
+    font-family:var(--mono); font-size:11px; letter-spacing:0.04em;
+    color:var(--ink-mute); margin:24px auto 0; max-width:54ch;
+  }
+
+  /* ── footer ─────────────────────────────────────────────────── */
+  .v10-foot{
+    border-top:1px solid var(--rule); margin-top:120px;
+    padding:48px 28px 32px;
+    font-family:var(--mono); font-size:12px; letter-spacing:0.04em;
+    color:var(--ink-mute); text-align:center;
+  }
+  .v10-foot a{color:var(--ink-mute); text-decoration:none;
+    border-bottom:1px solid transparent; transition:border-color .18s, color .18s;}
+  .v10-foot a:hover{color:var(--ink); border-color:var(--ink-mute);}
+  .v10-foot .foot-row{margin:0 0 14px;}
+  .v10-foot .foot-row > span,
+  .v10-foot .foot-row > a{margin:0 8px;}
+  .v10-foot .foot-sig{margin-top:18px; color:var(--ink-mute);}
+
+  /* ── visually-hidden ────────────────────────────────────────── */
+  .visually-hidden{position:absolute; width:1px; height:1px;
+    padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0);
+    white-space:nowrap; border:0;}
 </style>
 
-<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-10">
-<link rel="stylesheet" href="/styles.css?v=20260620-10">
-<script defer src="/brand/b3nd.js?v=20260620-10"></script>
-<script defer src="/app.js?v=20260620-10"></script>
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-v10">
+<script defer src="/brand/b3nd.js?v=20260620-v10"></script>
+<script defer src="/app.js?v=20260620-v10"></script>
 </head>
 <body>
 
 <!-- ============================================================
      CHROME
      ============================================================ -->
-<header class="site-head">
-  <a class="brand-mark" href="/" aria-label="b3nd home">
+<header class="v10-head">
+  <a class="v10-brand" href="/" aria-label="b3nd home">
     <b-3>b3nd</b-3>
   </a>
-  <nav class="site-nav" aria-label="Primary">
-    <a href="#shift">the shift</a>
-    <a href="#audiences">who's it for</a>
-    <a href="#architecture">how it works</a>
+  <nav class="v10-nav" aria-label="Primary">
     <a href="#proof">proof</a>
-    <a href="#timeline">what's next</a>
-    <a href="#join" class="primary">get early access</a>
+    <a href="/teams">for teams</a>
+    <a href="#community">community</a>
   </nav>
-  <button class="mode-toggle" type="button" data-action="toggle-mode" aria-label="Toggle dark or light surface">
-    <span class="mode-dot"></span><span class="mode-label">dark</span>
+  <button class="v10-mode" type="button" data-action="toggle-mode" aria-label="Toggle dark or light surface">
+    dark
   </button>
 </header>
 
 <!-- ============================================================
-     HERO
+     HERO — beat 0
+     The visitor reads it, doesn't know what it means,
+     and we don't help them. The page below has to earn the answer.
      ============================================================ -->
-<section class="hero" id="top">
-  <div class="hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow">
-        <span class="dot live"></span>
-        <span>a framework by bandeira.tech · firecat testnet live</span>
-      </div>
-      <h1 class="hero-h1 hero-h1-single">
-        Apps that stay yours.
-      </h1>
-      <p class="hero-lede">
-        <b-3>b3nd</b-3> is the framework for apps you ship in an afternoon,
-        share with humans and agents, and own forever —
-        by <a class="hero-bt" href="https://bandeira.tech" rel="noreferrer">bandeira.tech</a>.
-      </p>
-      <ul class="hero-usps" aria-label="What b3nd gives you">
-        <li class="usp">
-          <span class="usp-num">①</span>
-          <span class="usp-name">Build</span>
-          <span class="usp-line">Ship in an afternoon. Three verbs over one Rig.</span>
-        </li>
-        <li class="usp">
-          <span class="usp-num">②</span>
-          <span class="usp-name">Share</span>
-          <span class="usp-line">Same surface for humans, agents, and the network.</span>
-        </li>
-        <li class="usp">
-          <span class="usp-num">③</span>
-          <span class="usp-name">Own</span>
-          <span class="usp-line">Signed by your key. Portable between any app.</span>
-        </li>
-      </ul>
-      <p class="hero-sub">
-        <em class="verb">receive</em> · <em class="verb">read</em> · <em class="verb">observe</em> —
-        in-process, over HTTP, WebSocket, gRPC, MCP.
-        Across ten storage backends. Not the platforms hoarding your data.
-      </p>
-
-      <form class="signal-form" data-form="signup" action="/api/signup" method="post" novalidate>
-        <label class="visually-hidden" for="email-1">Email address</label>
-        <input class="signal-input" id="email-1" name="email" type="email" inputmode="email"
-               autocomplete="email" placeholder="you@somewhere.net" required>
-        <button class="signal-btn" type="submit">
-          <span class="btn-label">get the early signal</span>
-          <span class="btn-arrow" aria-hidden="true">→</span>
-        </button>
-        <p class="signal-note" data-form-note>
-          no spam · first to know when sprints open and apps go live
-        </p>
-      </form>
-
-      <div class="hero-quickstart" aria-label="Install the CLI now">
-        <span class="hq-or">— or skip the wait —</span>
-        <div class="ci-row">
-          <code class="ci-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
-          <button class="ci-copy" type="button" data-copy="deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd" aria-label="Copy install command">
-            <span class="ci-copy-label">copy</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="hero-secondary">
-        <a class="hero-2cta" href="#code">
-          <span>see the code</span>
-          <span aria-hidden="true">↓</span>
-        </a>
-        <a class="hero-2cta" href="#proof">
-          <span>running on firecat</span>
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </div>
-
-    <aside class="hero-cell" aria-hidden="true">
-      <div class="cell cell-depth" data-cell="L2">
-        <div class="cell-tag"><span class="dot live"></span> rig — observed live</div>
-        <svg viewBox="0 0 400 400" class="cell-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="a b3nd rig: receive, read, observe, replicated and saved across the network">
-          <defs>
-            <linearGradient id="sediment-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"  stop-color="var(--accent)" stop-opacity="0"/>
-              <stop offset="40%" stop-color="var(--accent)" stop-opacity="0.06"/>
-              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.22"/>
-            </linearGradient>
-            <radialGradient id="rig-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%"  stop-color="var(--accent)" stop-opacity="0.55"/>
-              <stop offset="60%" stop-color="var(--accent)" stop-opacity="0.18"/>
-              <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
-            </radialGradient>
-            <marker id="arrowhead" markerWidth="8" markerHeight="8" refX="7" refY="3"
-                    orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L8,3 z" fill="var(--accent)"/>
-            </marker>
-          </defs>
-
-          <!-- corner tick -->
-          <g font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="2">
-            <text x="16" y="22">L2 · rig</text>
-            <text x="384" y="22" text-anchor="end">b3nd://app</text>
-          </g>
-
-          <!-- TOP BAND: transports -->
-          <g font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="1">
-            <text x="200" y="48" text-anchor="middle">↑ move · http · ws · grpc · mcp</text>
-          </g>
-          <line x1="40" y1="58" x2="360" y2="58" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
-
-          <!-- nodes row -->
-          <g class="node sender">
-            <circle cx="80" cy="180" r="30" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.4"/>
-            <text x="80" y="184" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="var(--ink)">you</text>
-            <text x="80" y="224" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="2">signer</text>
-          </g>
-
-          <!-- Rig glow (animates softly) -->
-          <circle cx="200" cy="180" r="78" fill="url(#rig-glow)" class="rig-glow"/>
-
-          <g class="node rig">
-            <rect x="148" y="146" width="104" height="68" rx="10"
-                  fill="var(--accent)" stroke="var(--accent)" stroke-width="1.4"/>
-            <text x="200" y="166" text-anchor="middle" font-family="JetBrains Mono" font-size="10"
-                  fill="var(--bg)" font-weight="600" letter-spacing="2">RIG</text>
-            <text x="200" y="182" text-anchor="middle" font-family="JetBrains Mono" font-size="8"
-                  fill="var(--bg)" letter-spacing=".5">receive</text>
-            <text x="200" y="193" text-anchor="middle" font-family="JetBrains Mono" font-size="8"
-                  fill="var(--bg)" letter-spacing=".5">read · observe</text>
-            <text x="200" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="7"
-                  fill="var(--bg)" opacity="0.7" letter-spacing=".5">3 verbs · 1 surface</text>
-          </g>
-
-          <g class="node store">
-            <circle cx="320" cy="180" r="30" fill="var(--bg)" stroke="var(--ink)" stroke-width="1.2" stroke-dasharray="3 3"/>
-            <text x="320" y="184" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="var(--ink)">peer</text>
-            <text x="320" y="224" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="2">replica</text>
-          </g>
-
-          <!-- edges left -> rig -> peer -->
-          <path d="M110,180 L148,180" stroke="var(--accent)" stroke-width="1.8" fill="none" marker-end="url(#arrowhead)" class="edge edge-1"/>
-          <path d="M252,180 L290,180" stroke="var(--accent)" stroke-width="1.8" fill="none" marker-end="url(#arrowhead)" class="edge edge-2"/>
-
-          <!-- verb labels -->
-          <text x="129" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="1.5">receive</text>
-          <text x="271" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="1.5">send</text>
-
-          <!-- save line: down into the sediment -->
-          <line x1="40" y1="260" x2="360" y2="260" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
-          <path d="M200,214 L200,258" stroke="var(--accent)" stroke-width="1.6" fill="none"
-                stroke-dasharray="2 3" marker-end="url(#arrowhead)" class="edge edge-3"/>
-          <text x="208" y="248" font-family="JetBrains Mono" font-size="10" fill="var(--ink-mute)" letter-spacing="2">save</text>
-
-          <!-- BOTTOM BAND: persistence sediment -->
-          <rect x="0" y="260" width="400" height="140" fill="url(#sediment-grad)"/>
-          <g class="sediment" font-family="JetBrains Mono" font-size="8.5" fill="var(--ink-mute)">
-            <line x1="40" y1="290" x2="360" y2="290" stroke="var(--accent-border)" stroke-width="0.6"/>
-            <text x="48" y="286" letter-spacing="2">postgres · sqlite · s3 · ipfs · idb · fs</text>
-            <line x1="40" y1="320" x2="360" y2="320" stroke="var(--accent-border)" stroke-width="0.6" stroke-dasharray="1 3"/>
-            <text x="48" y="316" letter-spacing="2">mongo · elasticsearch · localstorage · …</text>
-            <line x1="40" y1="350" x2="360" y2="350" stroke="var(--accent-border)" stroke-width="0.4" stroke-dasharray="1 5"/>
-          </g>
-          <text x="200" y="384" text-anchor="middle" font-family="JetBrains Mono" font-size="9"
-                fill="var(--ink-mute)" letter-spacing="3">↓ save · the network keeps a copy</text>
-
-          <!-- traveling pulses on the wires -->
-          <circle r="3" fill="var(--accent)" class="pulse pulse-1">
-            <animateMotion dur="3.4s" repeatCount="indefinite" path="M110,180 L148,180" begin="1.4s"/>
-          </circle>
-          <circle r="3" fill="var(--accent)" class="pulse pulse-2">
-            <animateMotion dur="3.4s" repeatCount="indefinite" path="M252,180 L290,180" begin="2.0s"/>
-          </circle>
-          <circle r="3" fill="var(--accent)" class="pulse pulse-3">
-            <animateMotion dur="4.4s" repeatCount="indefinite" path="M200,212 L200,300" begin="2.6s"/>
-          </circle>
-        </svg>
-      </div>
-    </aside>
-  </div>
-
-  <div class="hero-marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>build</span><span aria-hidden="true">·</span>
-      <span>share</span><span aria-hidden="true">·</span>
-      <span>own</span><span aria-hidden="true">·</span>
-      <span>receive</span><span aria-hidden="true">·</span>
-      <span>read</span><span aria-hidden="true">·</span>
-      <span>observe</span><span aria-hidden="true">·</span>
-      <span>build</span><span aria-hidden="true">·</span>
-      <span>share</span><span aria-hidden="true">·</span>
-      <span>own</span><span aria-hidden="true">·</span>
-      <span>receive</span><span aria-hidden="true">·</span>
-      <span>read</span><span aria-hidden="true">·</span>
-      <span>observe</span><span aria-hidden="true">·</span>
-    </div>
-  </div>
+<section class="spell-hero" id="top">
+  <h1 class="spell-h1"><b-3>b3nd</b-3> is digital spellcraft.</h1>
+  <a class="spell-scroll" href="#shape" aria-label="scroll for more">↓</a>
 </section>
 
 <!-- ============================================================
-     TRUST STRIP — composed from open foundations
+     BEAT 1 — the shape, named
      ============================================================ -->
-<section class="trust" aria-label="Open foundations B3nd composes">
-  <div class="trust-inner">
-    <span class="trust-kicker">composed from open foundations</span>
-    <ul class="trust-list">
-      <li>Deno + JSR</li>
-      <li aria-hidden="true">·</li>
-      <li>TypeScript</li>
-      <li aria-hidden="true">·</li>
-      <li>Ed25519 / X25519</li>
-      <li aria-hidden="true">·</li>
-      <li>RFC 8785 JCS</li>
-      <li aria-hidden="true">·</li>
-      <li>SQLite · Postgres · S3 · IPFS</li>
-      <li aria-hidden="true">·</li>
-      <li>HTTP · WebSocket · gRPC · MCP</li>
-      <li aria-hidden="true">·</li>
-      <li>Cloudflare Workers · Vercel Edge</li>
-    </ul>
-  </div>
+<section class="beat beat-shape" id="shape">
+  <h2 class="beat-line">Three verbs. <em>One Rig.</em> The whole app.</h2>
 </section>
 
 <!-- ============================================================
-     THE SHIFT  — narrative frame
+     BEAT 2 — the protocol surface (move · save · send)
      ============================================================ -->
-<section class="shift" id="shift">
-  <div class="section-head">
-    <span class="num">01</span>
-    <span class="name">the shift</span>
-  </div>
-
-  <div class="shift-grid">
-    <div class="shift-claim">
-      <h2>The internet got built on rented data. We're building one where the data is yours.</h2>
-    </div>
-
-    <div class="shift-paragraphs">
-      <p>
-        For twenty years, the deal was simple: bring your attention,
-        bring your work, bring your audience — we'll keep the data,
-        we'll set the rules, we'll take the margin. The scarcity wasn't
-        in the storage or the compute. It was in the lock-in. Your
-        followers couldn't follow you out. Your records couldn't move.
-        Your messages lived on someone else's server. That's the moat.
-      </p>
-      <p>
-        <b-3>b3nd</b-3> dissolves it. Same internet. Same protocols.
-        Same ads, if you want them. But the data is signed by you,
-        encrypted to your key, replicated across stores you can pick,
-        and addressable by content hash — not by the URL of whoever
-        owns the door. Apps become interchangeable. Audiences become
-        portable. The money for your attention lands in your pocket.
-      </p>
-    </div>
-  </div>
-
-  <ul class="shift-pillars">
-    <li>
-      <span class="pill-num">①</span>
-      <h3>Build</h3>
-      <p>Three verbs — <em>receive</em>, <em>read</em>, <em>observe</em> — over a uniform surface. No schema migrations. No platform lock-in. Ship in an afternoon.</p>
+<section class="beat beat-narrow">
+  <ul class="trinity-list" aria-label="The protocol surface — three verbs for what happens to data">
+    <li class="trinity-row">
+      <span class="trinity-verb">move</span>
+      <span class="trinity-line">Data goes where you ask. HTTP, WebSocket, gRPC, MCP — one surface.</span>
     </li>
-    <li>
-      <span class="pill-num">②</span>
-      <h3>Share</h3>
-      <p>Apps talk over HTTP, WebSocket, gRPC, MCP — all from the same Rig. Humans and agents read the same surface. No protocol fork to ship.</p>
+    <li class="trinity-row">
+      <span class="trinity-verb">save</span>
+      <span class="trinity-line">Data stays where you ask. Memory, Postgres, SQLite, Mongo, Elasticsearch, S3, FS, IPFS, the browser — one contract.</span>
     </li>
-    <li>
-      <span class="pill-num">③</span>
-      <h3>Own</h3>
-      <p>Ed25519 signatures prove authorship. Client-side encryption keeps the server blind. Your key, your data, your audience — portable between any app.</p>
+    <li class="trinity-row">
+      <span class="trinity-verb">send</span>
+      <span class="trinity-line">Data leaves where you ask. To the systems you already run.</span>
     </li>
   </ul>
 </section>
 
 <!-- ============================================================
-     AUDIENCES
+     BEAT 3 — the application surface (receive · read · observe)
      ============================================================ -->
-<section class="audiences" id="audiences">
-  <div class="section-head">
-    <span class="num">02</span>
-    <span class="name">who it's for</span>
-  </div>
-
-  <h2 class="section-title">Three people we built this for.</h2>
-
-  <div class="audience-grid">
-    <article class="aud-card" data-aud="entrepreneur">
-      <div class="aud-tag">ai-native entrepreneurs</div>
-      <h3>You're shipping a product, not a company hierarchy.</h3>
-      <p class="aud-body">
-        Your stack should compose the way your team does — small, fast, owned.
-        One Rig works the same across ten storage backends and four transports.
-        Humans and agents read the same surface — no protocol to fork.
-        Deploy to Firecat testnet free-tier. No vendor lock-in. No moat the platform owns instead of you.
-      </p>
-      <ul class="aud-bullets">
-        <li>Same Rig across in-process, HTTP, WS, gRPC, MCP</li>
-        <li>Ten storage backends behind one <code>SaveClient</code></li>
-        <li>Ship to Firecat free-tier in one <code>wrangler deploy</code></li>
-      </ul>
-    </article>
-
-    <article class="aud-card" data-aud="builder">
-      <div class="aud-tag">new devs · script kids · vibe coders</div>
-      <h3>You want the web to feel direct again.</h3>
-      <p class="aud-body">
-        The web got heavy. Frameworks fight you. Cloud bills sneak up.
-        <b-3>b3nd</b-3> is the version where you write the read, the write, the observe — and the framework wires the rest.
-        Three verbs. One import. The same Rig runs in your terminal and on the network.
-        Ship your first app this afternoon — and if people actually want it, the attention marketplace pays you while you sleep.
-      </p>
-      <ul class="aud-bullets">
-        <li>One <code>deno install</code> for the <code>bnd</code> CLI</li>
-        <li>Tutorials, recorded office hours, monthly build sprints</li>
-        <li>Open bounties — well-scoped, paid in crypto</li>
-      </ul>
-    </article>
-
-    <article class="aud-card" data-aud="creator">
-      <div class="aud-tag">creators · attention workers</div>
-      <h3>Your audience should follow you — not the platform.</h3>
-      <p class="aud-body">
-        Every list, post, channel you make on a <b-3>b3nd</b-3> app belongs to you — cryptographically, portably.
-        When advertisers bid for your audience's attention, the money lands in your account. No 30% house cut.
-        If the app goes weird, move your audience to the next one — they come with you.
-        Same internet you already use. Different pockets.
-      </p>
-      <ul class="aud-bullets">
-        <li>Audience is content-addressed, not platform-locked</li>
-        <li>Direct attention marketplace — no platform middleman</li>
-        <li>Encrypted on your key — the network can't read it, can't sell it</li>
-      </ul>
-    </article>
-  </div>
+<section class="beat beat-narrow">
+  <p class="trinity-intro">Three verbs again — this time for what your app <em>does</em> on top.</p>
+  <ul class="trinity-list" aria-label="The app surface — three verbs for what apps do on top">
+    <li class="trinity-row">
+      <span class="trinity-verb">receive</span>
+      <span class="trinity-line">Take a message in. From a user, an agent, a peer.</span>
+    </li>
+    <li class="trinity-row">
+      <span class="trinity-verb">read</span>
+      <span class="trinity-line">Look at data you have. By URI, by query, by stream.</span>
+    </li>
+    <li class="trinity-row">
+      <span class="trinity-verb">observe</span>
+      <span class="trinity-line">Watch data change. React when it does.</span>
+    </li>
+  </ul>
 </section>
 
 <!-- ============================================================
-     ARCHITECTURE — data-oriented architecture pitch
+     BEAT 4 — the symmetry pivot (load-bearing)
      ============================================================ -->
-<section class="architecture" id="architecture">
-  <div class="section-head">
-    <span class="num">03</span>
-    <span class="name">how it works</span>
+<section class="beat beat-pivot">
+  <div class="pivot-stack">
+    <p>The same <em>six verbs</em>.</p>
+    <p>In-process. Over HTTP, WebSocket, gRPC, MCP.</p>
+    <p>Across <em>ten storage backends</em>.</p>
+    <p>For your users <em>and</em> for their agents.</p>
   </div>
-
-  <h2 class="section-title">One Rig. Any backend. Any transport.</h2>
-  <p class="section-lede">
-    Most stacks bolt you to one database, one cloud, one transport, one permission model.
-    <b-3>b3nd</b-3> separates the wiring from where the bytes live. You declare what flows where —
-    the Rig composes it. A new user flow doesn't mean new infrastructure.
+  <p class="pivot-coda">
+    Your agent reads what your user reads. Through the same surface,
+    signed by the same key.
   </p>
-
-  <div class="arch-grid">
-
-    <div class="arch-card" data-arc="speed">
-      <div class="arc-head"><span class="arc-num">3.1</span><span class="arc-tag">fast deployment</span></div>
-      <h3>New capabilities ship as wiring, not infrastructure.</h3>
-      <p>
-        Adding a feature should not require migrating a database. In <b-3>b3nd</b-3>,
-        capabilities are programs (classifiers) wired to handlers (pure transforms)
-        on a <code>Rig</code>. New flow = new route. Storage stays where it is.
-      </p>
-      <pre><code><span class="c-com">// add a route and a reaction → already serving</span>
-<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
-  routes: { receive: [<span class="c-fn">connection</span>(save, [<span class="c-str">"comment://**"</span>])] },
-  reactions: { <span class="c-str">"comment://**"</span>: notifyMods },
-});
-Deno.<span class="c-fn">serve</span>({ port: <span class="c-num">8080</span> }, <span class="c-fn">httpApi</span>(rig));</code></pre>
-    </div>
-
-    <div class="arch-card" data-arc="security">
-      <div class="arc-head"><span class="arc-num">3.2</span><span class="arc-tag">security model</span></div>
-      <h3>The server is blind on purpose.</h3>
-      <p>
-        Ed25519 identity. X25519 envelopes. RFC 8785 canonicalization.
-        The data is signed and encrypted before it leaves the device.
-        The network operator cannot read what it stores — so it cannot
-        sell it, leak it, or be served a subpoena for it.
-        Privacy is a property of the data, not a policy.
-      </p>
-      <ul class="arc-list">
-        <li><strong>Ed25519</strong> — every message carries an author signature</li>
-        <li><strong>X25519</strong> — recipient-encrypted envelopes</li>
-        <li><strong>content-addressed</strong> — <code>hash://sha256/…</code> over canonical bytes</li>
-        <li><strong>no impersonation</strong> — keys verify on read, every time</li>
-      </ul>
-    </div>
-
-    <div class="arch-card" data-arc="ops">
-      <div class="arc-head"><span class="arc-num">3.3</span><span class="arc-tag">data operations</span></div>
-      <h3>Ten storage backends. One contract.</h3>
-      <p>
-        <code>EntityStore</code> is the contract: <code>write</code>, <code>read</code>,
-        <code>delete</code>. Memory, Postgres, SQLite, Mongo, Elasticsearch, S3, FS,
-        IPFS, localStorage, IndexedDB — all the same surface. Compose multiple
-        stores at the Rig level: receive broadcasts, read takes the first hit.
-        Swap substrates by config, not by rewrite.
-      </p>
-      <pre><code><span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
-  routes: {
-    receive: [<span class="c-fn">connection</span>(local, [<span class="c-str">"**"</span>]),
-              <span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
-    read:    [<span class="c-fn">connection</span>(local, [<span class="c-str">"**"</span>]),
-              <span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
-  },
-});
-<span class="c-key">await</span> rig.<span class="c-fn">receive</span>([[uri, payload]]); <span class="c-com">// → broadcast</span>
-<span class="c-key">await</span> rig.<span class="c-fn">read</span>([uri]);              <span class="c-com">// → first hit wins</span></code></pre>
-    </div>
-
-    <div class="arch-card" data-arc="flows">
-      <div class="arc-head"><span class="arc-num">3.4</span><span class="arc-tag">safe-and-scalable i/o</span></div>
-      <h3>Every flow is the same shape.</h3>
-      <p>
-        <code>receive</code> what came in. <code>read</code> what's there.
-        <code>observe</code> what changes. That's the entire surface —
-        in-process, over HTTP, WebSocket, gRPC, MCP. Ship a new flow:
-        write the program, write the handler, choose the surface.
-        The rest is already correct.
-      </p>
-      <div class="surface-pills">
-        <span class="surf-pill">in-process</span>
-        <span class="surf-pill">http</span>
-        <span class="surf-pill">websocket</span>
-        <span class="surf-pill">grpc</span>
-        <span class="surf-pill">mcp</span>
-      </div>
-    </div>
-
-  </div>
 </section>
 
 <!-- ============================================================
-     CODE  — what it looks like in practice
+     BEAT 5 — proof
      ============================================================ -->
-<section class="code-look" id="code">
-  <div class="section-head">
-    <span class="num">3.5</span>
-    <span class="name">what it looks like</span>
-  </div>
-
-  <h2 class="section-title">A rig. Three verbs. Ship.</h2>
-  <p class="section-lede">
-    Receive what came in. Read what's there. Observe what changes. The same
-    surface in-process, over the wire, and for agents. Here's a tiny one.
-  </p>
-
-  <div class="code-grid">
-    <article class="code-card">
-      <div class="code-head">
-        <span class="code-tag">define</span>
-        <span class="code-file">my-app/rig.ts</span>
-      </div>
-      <pre><code><span class="c-com">// b3nd-core: Rig, connections. b3nd-save: stores.</span>
-<span class="c-com">// b3nd-move: surfaces (http, ws, grpc, mcp).</span>
-<span class="c-key">import</span> { <span class="c-fn">connection</span>, <span class="c-fn">Rig</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-core"</span>;
-<span class="c-key">import</span> { <span class="c-fn">SaveClient</span>, <span class="c-fn">passThroughRecord</span> }
-       <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save/clients"</span>;
-<span class="c-key">import</span> { <span class="c-fn">SqliteStore</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save/sqlite"</span>;
-<span class="c-key">import</span> { <span class="c-fn">TYPE_TAGS</span> }   <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save/entity"</span>;
-<span class="c-key">import</span> { <span class="c-fn">httpApi</span> }     <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-move/http/service"</span>;
-
-<span class="c-key">const</span> notes = { name: <span class="c-str">"notes"</span>, fields: [
-  { name: <span class="c-str">"title"</span>, type: [TYPE_TAGS.STRING] },
-  { name: <span class="c-str">"body"</span>,  type: [TYPE_TAGS.STRING] },
-]};
-<span class="c-key">const</span> save = <span class="c-key">new</span> <span class="c-fn">SaveClient</span>(
-  passThroughRecord, notes, <span class="c-key">new</span> <span class="c-fn">SqliteStore</span>(<span class="c-str">"./.b3nd/notes.db"</span>),
-);
-<span class="c-key">await</span> save.<span class="c-fn">init</span>();
-
-<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
-  routes: {
-    receive: [<span class="c-fn">connection</span>(save, [<span class="c-str">"note://**"</span>])],
-    read:    [<span class="c-fn">connection</span>(save, [<span class="c-str">"note://**"</span>])],
-  },
-});
-
-Deno.<span class="c-fn">serve</span>({ port: <span class="c-num">8080</span> }, <span class="c-fn">httpApi</span>(rig));
-<span class="c-com">// → live on http. same rig also serves ws, grpc, mcp.</span></code></pre>
-    </article>
-
-    <article class="code-card">
-      <div class="code-head">
-        <span class="code-tag">consume</span>
-        <span class="code-file">any-client</span>
-      </div>
-      <pre><code><span class="c-com">// the surface is symmetric.</span>
-<span class="c-com">// in-process, http, ws, mcp: same three verbs.</span>
-<span class="c-key">import</span> { <span class="c-fn">connection</span>, <span class="c-fn">Rig</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-core"</span>;
-<span class="c-key">import</span> { <span class="c-fn">HttpClient</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-move/http/client"</span>;
-
-<span class="c-key">const</span> remote = <span class="c-key">new</span> <span class="c-fn">HttpClient</span>({ url: <span class="c-str">"https://app.example"</span> });
-<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
-  routes: {
-    receive: [<span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
-    read:    [<span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
-    observe: [<span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
-  },
-});
-
-<span class="c-key">await</span> rig.<span class="c-fn">receive</span>([
-  [<span class="c-str">"note://2026/06/20/first"</span>, { title: <span class="c-str">"build, share, own"</span> }],
-]);
-
-<span class="c-key">const</span> [[, note]] = <span class="c-key">await</span> rig.<span class="c-fn">read</span>([<span class="c-str">"note://2026/06/20/first"</span>]);
-
-<span class="c-key">const</span> ac = <span class="c-key">new</span> AbortController();
-<span class="c-key">for</span> <span class="c-key">await</span> (<span class="c-key">const</span> uris <span class="c-key">of</span> rig.<span class="c-fn">observe</span>([<span class="c-str">"note://**"</span>], ac.signal)) {
-  <span class="c-key">for</span> (<span class="c-key">const</span> [uri, payload] <span class="c-key">of</span> <span class="c-key">await</span> rig.<span class="c-fn">read</span>(uris))
-    <span class="c-fn">render</span>(uri, payload); <span class="c-com">// live, signed, content-addressed.</span>
-}</code></pre>
-    </article>
-  </div>
-
-  <div class="code-install">
-    <div class="ci-cell">
-      <span class="ci-kicker">install the cli</span>
-      <div class="ci-row">
-        <code class="ci-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
-        <button class="ci-copy" type="button" data-copy="deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd" aria-label="Copy install command">
-          <span class="ci-copy-label">copy</span>
-        </button>
-      </div>
-    </div>
-    <div class="ci-cell">
-      <span class="ci-kicker">or run a node image</span>
-      <div class="ci-row">
-        <code class="ci-cmd">docker run ghcr.io/bandeira-tech/b3nd/b3nd-node:latest</code>
-        <button class="ci-copy" type="button" data-copy="docker run ghcr.io/bandeira-tech/b3nd/b3nd-node:latest" aria-label="Copy docker command">
-          <span class="ci-copy-label">copy</span>
-        </button>
-      </div>
-    </div>
-    <div class="ci-cell">
-      <span class="ci-kicker">or ship to firecat</span>
-      <div class="ci-row">
-        <code class="ci-cmd">bnd push --to firecat</code>
-        <button class="ci-copy" type="button" data-copy="bnd push --to firecat" aria-label="Copy push command">
-          <span class="ci-copy-label">copy</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     TERMINAL  — bnd push, live-looking
-     ============================================================ -->
-<section class="terminal-block" aria-label="A representative bnd CLI session">
-  <div class="terminal-inner">
-    <div class="terminal">
-      <div class="term-chrome">
-        <span class="term-dot"></span>
-        <span class="term-dot"></span>
-        <span class="term-dot"></span>
-        <span class="term-title">~/ws/my-app · bnd</span>
-        <span class="term-status"><span class="dot live"></span> firecat · evergreen</span>
-      </div>
-      <div class="term-body" data-terminal>
-        <span class="t-line"><span class="t-prompt">~/ws/my-app</span> <span class="t-cmd">$ bnd push --to firecat</span></span>
-        <span class="t-line t-ok">→ packaging rig <span class="t-mute">(sqlite store + http surface)</span></span>
-        <span class="t-line t-ok">→ signing manifest <span class="t-mute">ed25519 · 64b9…1c0a</span></span>
-        <span class="t-line t-ok">→ uploading to <span class="t-em">firecat://evergreen</span></span>
-        <span class="t-line t-ok">→ ready · 124 ms · cold start</span>
-        <span class="t-line t-ok">→ open <span class="t-em">https://app-64b9.firecat.run</span></span>
-        <span class="t-line t-mute">  routes  ▸ receive · read · observe</span>
-        <span class="t-line t-mute">  move    ▸ http :443 · ws :443 · grpc :443 · mcp :443</span>
-        <span class="t-line t-mute">  save    ▸ broadcast → memory · sqlite · evergreen</span>
-        <span class="t-line"><span class="t-prompt">~/ws/my-app</span> <span class="t-cursor">▍</span></span>
-      </div>
-    </div>
-    <div class="term-aside">
-      <span class="term-kicker">one command</span>
-      <h3 class="term-title2">From your laptop, to a public, paid network.</h3>
-      <p>
-        <code>bnd push</code> packages your rig, signs the manifest with
-        your key, ships it to the network, and gives you a live URL.
-        No build pipeline. No CI. No "what region should I pick."
-        The same surface runs locally and on the wire.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     AGENTS  — same surface for the next interface
-     ============================================================ -->
-<section class="agents" id="agents">
-  <div class="agents-inner">
-    <div class="agents-tag">
-      <span class="dot live"></span>
-      <span>built for the next interface</span>
-    </div>
-    <h2 class="agents-title">
-      Agents and humans read the <em>same surface</em>.
-    </h2>
-    <p class="agents-lede">
-      The Rig speaks MCP natively. Every capability you ship to humans is
-      already available to agents — same verbs, same shapes, same
-      content-addressed I/O. No second protocol. No second backend.
-      No "agent SDK" tacked on. Just three verbs over a uniform surface,
-      every door you open opens both ways.
-    </p>
-    <div class="agents-rail">
-      <div class="agents-r">
-        <span class="ar-num">→</span>
-        <h4>Deterministic verbs</h4>
-        <p>receive · read · observe. Predictable enough for tools to compose, free enough for agents to invent.</p>
-      </div>
-      <div class="agents-r">
-        <span class="ar-num">→</span>
-        <h4>Content-addressed I/O</h4>
-        <p><code>hash://sha256/…</code> over RFC 8785. Agents can quote, cite, and reference without forgery.</p>
-      </div>
-      <div class="agents-r">
-        <span class="ar-num">→</span>
-        <h4>Signed by default</h4>
-        <p>Every message is Ed25519-signed. Agents act on their own keys. Audit trails are free.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-     PROOF
-     ============================================================ -->
-<section class="proof" id="proof">
-  <div class="section-head">
-    <span class="num">04</span>
-    <span class="name">proof, not pitch</span>
-  </div>
-
-  <h2 class="section-title">Running, today.</h2>
-  <p class="section-lede">
-    No whitepaper. Live testnet. Published packages. Apps you can use this afternoon.
-  </p>
-
+<section class="beat" id="proof">
+  <p class="proof-head"><em>Not a sandbox.</em> Running now.</p>
   <div class="proof-grid">
     <a class="proof-card" href="https://testnet-evergreen.fire.cat" target="_blank" rel="noreferrer noopener">
       <div class="proof-tag"><span class="dot live"></span> testnet · live</div>
       <h3>Firecat — evergreen testnet</h3>
-      <p>The public B3nd network. Running now. Your apps deploy here.</p>
+      <p>The public b3nd network. Running now. Your apps deploy here.</p>
       <span class="proof-link">testnet-evergreen.fire.cat →</span>
     </a>
 
@@ -759,285 +494,123 @@ Deno.<span class="c-fn">serve</span>({ port: <span class="c-num">8080</span> }, 
     <article class="proof-card">
       <div class="proof-tag">lighthouse app</div>
       <h3>Listorama</h3>
-      <p>Lists for the things you love. Audience-portable, end-to-end encrypted, with a built-in attention marketplace that pays out to you.</p>
-      <span class="proof-link soon">soon · v0.0.1 alpha</span>
+      <p>A marketplace where advertisers bid for attention and money flows to users.</p>
+      <span class="proof-link soon">soon · α 0.0.1</span>
     </article>
 
     <article class="proof-card">
       <div class="proof-tag">dogfood</div>
       <h3>k3p</h3>
-      <p>The capture-anything CLI. URLs, notes, snippets — saved on a personal b3nd-save store at <code>~/.k3p/data</code>. We use it daily.</p>
+      <p>Capture anything from the command line. Your data, your machine, your b3nd-save store.</p>
       <span class="proof-link soon">open soon · ~/.local/bin/k3p</span>
     </article>
   </div>
 </section>
 
 <!-- ============================================================
-     COMMUNITY — hackathons, builders
+     BEAT 6 — architecture beat (for teams / enterprise off-ramp)
      ============================================================ -->
-<section class="community" id="community">
-  <div class="section-head">
-    <span class="num">05</span>
-    <span class="name">how to get in</span>
-  </div>
-
-  <div class="community-grid">
-    <div class="community-copy">
-      <h2>Builders are showing up.</h2>
-      <p>
-        We run <b-3>b3nd</b-3> like a community machine, not a launch event.
-        Monthly mini-hackathons. Bi-weekly recorded training. Open bounties
-        for well-scoped work. Office hours every week. The first round of
-        prizes rewards the best video demo, the most useful business, the
-        funniest meme app, and the apps shipped in the builder's own language.
-      </p>
-      <p>
-        Small rewards, often, in crypto, paid directly. No 30% house cut on
-        the way out. If you're an entry-level builder — or a "new script kid"
-        wielding AI — this is the right place to ship your first app on a
-        real, paying network.
-      </p>
-    </div>
-
-    <ul class="community-list">
-      <li>
-        <span class="cl-kicker">monthly</span>
-        <span class="cl-name">build sprints</span>
-        <span class="cl-meta">themed, paid, public</span>
-      </li>
-      <li>
-        <span class="cl-kicker">bi-weekly</span>
-        <span class="cl-name">training sessions</span>
-        <span class="cl-meta">recorded, become the cookbook</span>
-      </li>
-      <li>
-        <span class="cl-kicker">weekly</span>
-        <span class="cl-name">office hours</span>
-        <span class="cl-meta">live, public, on the record</span>
-      </li>
-      <li>
-        <span class="cl-kicker">always</span>
-        <span class="cl-name">bounty board</span>
-        <span class="cl-meta">small, specified, well-paid</span>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ============================================================
-     TIMELINE — what's coming, in order
-     ============================================================ -->
-<section class="timeline" id="timeline">
-  <div class="section-head">
-    <span class="num">06</span>
-    <span class="name">what's next</span>
-  </div>
-
-  <h2 class="section-title">Already shipping. Here's the order.</h2>
-  <p class="section-lede">
-    Public motion, public dates. Every line below is a thing we're shipping,
-    not a roadmap promise.
+<section class="beat beat-arch" id="for-teams">
+  <h2 class="arch-label">AI-Native Data-Oriented Architecture</h2>
+  <p class="arch-line">
+    For teams drowning in SOA glue, integration boilerplate, and the
+    ops cost of moving data between systems — <b-3>b3nd</b-3> is the
+    substrate that absorbs all three.
   </p>
-
-  <ol class="timeline-list">
-    <li class="tl-row tl-now">
-      <div class="tl-marker">
-        <span class="dot live"></span>
-        <span class="tl-when">now</span>
-      </div>
-      <div class="tl-body">
-        <h3>Firecat evergreen testnet · live</h3>
-        <p>Open testnet hosting B3nd nodes. Public endpoints, free-tier deploy targets, fair-use throttling.</p>
-      </div>
-    </li>
-    <li class="tl-row">
-      <div class="tl-marker">
-        <span class="tl-when">this month</span>
-      </div>
-      <div class="tl-body">
-        <h3>Listorama v0.0.1 alpha · public</h3>
-        <p>The lighthouse app — lists, audience, attention marketplace — opens its waitlist to the early-signal list first.</p>
-      </div>
-    </li>
-    <li class="tl-row">
-      <div class="tl-marker">
-        <span class="tl-when">first sprint</span>
-      </div>
-      <div class="tl-body">
-        <h3>Monthly build sprint · round 01</h3>
-        <p>One brief, one week, five prize categories. Best video demo · serious business · funniest · community choice · your language.</p>
-      </div>
-    </li>
-    <li class="tl-row">
-      <div class="tl-marker">
-        <span class="tl-when">rolling</span>
-      </div>
-      <div class="tl-body">
-        <h3>Bounty board opens</h3>
-        <p>Well-specified work. Small-and-often payouts in crypto. Documented in the open.</p>
-      </div>
-    </li>
-    <li class="tl-row tl-future">
-      <div class="tl-marker">
-        <span class="tl-when">later this year</span>
-      </div>
-      <div class="tl-body">
-        <h3>Flagship hackathons · co-located</h3>
-        <p>Tier-2 events once the community machine is running steadily. DevPost / MLH / ETHGlobal / lablab.ai tracks.</p>
-      </div>
-    </li>
-  </ol>
+  <a class="arch-cta" href="/teams">for teams →</a>
 </section>
 
 <!-- ============================================================
-     STEPS — three things to do next
+     BEAT 7 — ownership + economics
      ============================================================ -->
-<section class="steps" aria-label="What to do next">
-  <div class="steps-inner">
-    <div class="steps-head">
-      <span class="steps-kicker">three steps</span>
-      <h2>From scrolling, to shipping.</h2>
-    </div>
-    <ol class="steps-list">
-      <li class="step">
-        <span class="step-num">01</span>
-        <div class="step-content">
-          <h3>Install the CLI</h3>
-          <p>One Deno install gets the <code>bnd</code> binary on your path. Works the same on macOS, Linux, Windows.</p>
-          <code class="step-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
-        </div>
-      </li>
-      <li class="step">
-        <span class="step-num">02</span>
-        <div class="step-content">
-          <h3>Wire a rig</h3>
-          <p>Pick a store, declare a handler, choose a transport. One file. No CI, no config, no schema migrations.</p>
-          <code class="step-cmd">bnd init my-app &amp;&amp; cd my-app</code>
-        </div>
-      </li>
-      <li class="step">
-        <span class="step-num">03</span>
-        <div class="step-content">
-          <h3>Push to the network</h3>
-          <p>One command. Live URL. Already speaking HTTP, WebSocket, and MCP. You're on Firecat.</p>
-          <code class="step-cmd">bnd push --to firecat</code>
-        </div>
-      </li>
-    </ol>
+<section class="beat beat-own">
+  <h2 class="own-line">What you build, you keep.</h2>
+  <p>
+    Every message your app makes is signed by your key. Every artifact
+    is content-addressed. Your data is portable between any
+    <b-3>b3nd</b-3> app — yours, someone else's, one that doesn't
+    exist yet.
+  </p>
+  <p>
+    And when the network earns, the network earns <em>for the people on it.</em>
+    Listorama is the first app of a marketplace where advertisers bid
+    for attention and money flows to users — not to the platform.
+  </p>
+</section>
+
+<!-- ============================================================
+     BEAT 8 — "is this me?" — audience cards
+     ============================================================ -->
+<section class="beat" id="audience">
+  <div class="audience-grid">
+    <article class="aud-card">
+      <div class="aud-tag">ai-native entrepreneurs</div>
+      <h3>You're shipping a product, not a company hierarchy.</h3>
+      <p><b-3>b3nd</b-3> is your whole back end. One Rig. Three verbs. The thing scales the way your team does.</p>
+    </article>
+
+    <article class="aud-card">
+      <div class="aud-tag">new devs · script kids · vibe coders</div>
+      <h3>You want the web to feel direct again.</h3>
+      <p>Prompt the app. Ship the system. The agent and you read the same surface.</p>
+    </article>
+
+    <article class="aud-card">
+      <div class="aud-tag">architects · ops</div>
+      <h3>You're tired of SOA glue.</h3>
+      <p><b-3>b3nd</b-3> is the substrate that absorbs the integration boilerplate. The ops cost of moving data between systems collapses into the Rig.</p>
+    </article>
+
+    <article class="aud-card">
+      <div class="aud-tag">creators · attention workers</div>
+      <h3>Your audience should follow you — not the platform.</h3>
+      <p>The marketplace pays you, not a feed. Your audience is content-addressed, not platform-locked.</p>
+    </article>
   </div>
 </section>
 
 <!-- ============================================================
-     FOUNDER NOTE
+     BEAT 9 — community + the door in
      ============================================================ -->
-<section class="note" aria-label="A short note from the founder">
-  <div class="note-inner">
-    <div class="note-tag">
-      <span>a short note</span>
-    </div>
-    <blockquote class="note-body">
-      <p>
-        Software has spent a decade getting <em>more</em> complicated to do
-        <em>fewer</em> things — more dependencies, more renderers, more
-        opaque platforms, more rented data. The interesting work has been
-        sitting underneath, in the wiring: how data moves, where it
-        persists, what proves it's yours.
-      </p>
-      <p>
-        <b-3>b3nd</b-3> is what falls out when you make that wiring
-        explicit. Three verbs. One Rig. A small, uniform surface that
-        agents can use as easily as humans. Storage that's portable.
-        Identity that's cryptographic. A network whose economics flow
-        to the people doing the work.
-      </p>
-      <p>
-        We're building it in the open. If you're a builder, a creator, or
-        anyone tired of the moats — get on the list. We'll bring you in
-        as the doors open.
-      </p>
-    </blockquote>
-    <footer class="note-sign">
-      <span class="ns-name"><b-3>b3nd</b-3> · rafael bandeira</span>
-      <span class="ns-loc">amsterdam · 2026</span>
-    </footer>
-  </div>
+<section class="beat beat-community" id="community">
+  <p class="com-lines">
+    Monthly mini-hackathons. Bi-weekly recorded training.
+    Open bounties. Office hours every week.
+  </p>
+  <p class="com-lines">
+    Prizes for: best video demo, most serious business,
+    funniest, community choice, your language.
+  </p>
+  <p class="com-coda">Built in the open. Built with the people building on it.</p>
+
+  <form class="door-form" data-form="signup" action="/api/signup" method="post" novalidate>
+    <label class="visually-hidden" for="email-door">Email address</label>
+    <input class="door-input" id="email-door" name="email" type="email"
+           inputmode="email" autocomplete="email"
+           placeholder="you@somewhere.net" required>
+    <button class="door-btn" type="submit">
+      <span>come in</span>
+      <span aria-hidden="true">→</span>
+    </button>
+  </form>
+  <p class="door-note" data-form-note>
+    no spam · your email lives on a <b-3>b3nd</b-3> store, what else
+  </p>
 </section>
 
 <!-- ============================================================
-     CTA · early signal
+     FOOTER — minimal
      ============================================================ -->
-<section class="cta" id="join">
-  <div class="cta-inner">
-    <div class="cta-eyebrow">
-      <span class="dot live"></span>
-      <span>early signal</span>
-      <span class="signup-count" data-signup-count aria-live="polite"></span>
-    </div>
-    <h2 class="cta-title">
-      Show up before everyone else does.
-    </h2>
-    <p class="cta-lede">
-      First in line for build sprints, beta apps, and paid bounties.
-      One email. Nothing else.
-    </p>
-
-    <form class="signal-form signal-form-lg" data-form="signup" action="/api/signup" method="post" novalidate>
-      <label class="visually-hidden" for="email-2">Email address</label>
-      <input class="signal-input" id="email-2" name="email" type="email" inputmode="email"
-             autocomplete="email" placeholder="you@somewhere.net" required>
-      <button class="signal-btn" type="submit">
-        <span class="btn-label">get the early signal</span>
-        <span class="btn-arrow" aria-hidden="true">→</span>
-      </button>
-      <p class="signal-note" data-form-note>
-        no spam · unsubscribe with a single click · your email lives on a <b-3>b3nd</b-3> store, what else
-      </p>
-    </form>
+<footer class="v10-foot">
+  <div class="foot-row">
+    <a href="https://jsr.io/@bandeira-tech">jsr · @bandeira-tech</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://testnet-evergreen.fire.cat">firecat testnet</a>
+    <span aria-hidden="true">·</span>
+    <a href="https://bandeira.tech">bandeira.tech</a>
   </div>
-</section>
-
-<!-- ============================================================
-     FOOTER
-     ============================================================ -->
-<footer class="site-foot">
-  <div class="foot-grid">
-    <div class="foot-brand">
-      <div class="brand-mark"><b-3>b3nd</b-3></div>
-      <p>build · share · own</p>
-      <p class="mute">a framework by <a href="https://bandeira.tech" rel="noreferrer">bandeira.tech</a></p>
-    </div>
-
-    <div class="foot-col">
-      <span class="foot-h">packages</span>
-      <a href="https://jsr.io/@bandeira-tech/b3nd-core">b3nd-core</a>
-      <a href="https://jsr.io/@bandeira-tech/b3nd-move">b3nd-move</a>
-      <a href="https://jsr.io/@bandeira-tech/b3nd-save">b3nd-save</a>
-      <a href="https://jsr.io/@bandeira-tech/b3nd-canon">b3nd-canon</a>
-      <a href="https://jsr.io/@bandeira-tech/b3nd-cli">b3nd-cli</a>
-    </div>
-
-    <div class="foot-col">
-      <span class="foot-h">network</span>
-      <a href="https://testnet-evergreen.fire.cat">firecat testnet</a>
-      <a href="https://fire.cat">fire.cat</a>
-      <a href="https://jsr.io/@bandeira-tech">jsr · @bandeira-tech</a>
-    </div>
-
-    <div class="foot-col">
-      <span class="foot-h">read</span>
-      <a href="#shift">the shift</a>
-      <a href="#architecture">how it works</a>
-      <a href="#proof">proof</a>
-      <a href="#community">community</a>
-    </div>
-  </div>
-
-  <div class="foot-rule"></div>
-
-  <div class="foot-meta">
-    <span class="copy">© <b-3>b3nd</b-3> · the framework</span>
-    <span class="dot mute"></span>
-    <span class="motto">empty the moats. ship the work.</span>
+  <div class="foot-sig">
+    © <b-3>b3nd</b-3> · digital spellcraft · amsterdam · 2026
   </div>
 </footer>
 

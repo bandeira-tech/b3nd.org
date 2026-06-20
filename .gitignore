@@ -3,3 +3,8 @@ node_modules/
 .dev.vars
 .DS_Store
 *.log
+
+# Local working artifacts — keep out of the repo
+.claude/scheduled_tasks.lock
+.playwright-mcp/
+/v10-*.png
