@@ -88,6 +88,26 @@
     if (cls) el.classList.add(cls);
   }
 
+  /* ---------- copy-to-clipboard buttons ---------- */
+  document.querySelectorAll('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.getAttribute('data-copy') || '';
+      const label = btn.querySelector('.ci-copy-label');
+      const prev = label ? label.textContent : '';
+      try {
+        await navigator.clipboard.writeText(text);
+        if (label) label.textContent = 'copied';
+        btn.classList.add('is-copied');
+      } catch (_) {
+        if (label) label.textContent = 'select·copy';
+      }
+      setTimeout(() => {
+        if (label) label.textContent = prev || 'copy';
+        btn.classList.remove('is-copied');
+      }, 1400);
+    });
+  });
+
   /* ---------- live signup count ---------- */
   const countEl = document.querySelector('[data-signup-count]');
   if (countEl) {

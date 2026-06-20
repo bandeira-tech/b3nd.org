@@ -76,10 +76,10 @@
   *{box-sizing:border-box;}
 </style>
 
-<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-6">
-<link rel="stylesheet" href="/styles.css?v=20260620-6">
-<script defer src="/brand/b3nd.js?v=20260620-6"></script>
-<script defer src="/app.js?v=20260620-6"></script>
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-7">
+<link rel="stylesheet" href="/styles.css?v=20260620-7">
+<script defer src="/brand/b3nd.js?v=20260620-7"></script>
+<script defer src="/app.js?v=20260620-7"></script>
 </head>
 <body>
 
@@ -582,15 +582,30 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
   <div class="code-install">
     <div class="ci-cell">
       <span class="ci-kicker">install the cli</span>
-      <code class="ci-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
+      <div class="ci-row">
+        <code class="ci-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
+        <button class="ci-copy" type="button" data-copy="deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd" aria-label="Copy install command">
+          <span class="ci-copy-label">copy</span>
+        </button>
+      </div>
     </div>
     <div class="ci-cell">
       <span class="ci-kicker">or run a node image</span>
-      <code class="ci-cmd">docker run ghcr.io/bandeira-tech/b3nd/b3nd-node:latest</code>
+      <div class="ci-row">
+        <code class="ci-cmd">docker run ghcr.io/bandeira-tech/b3nd/b3nd-node:latest</code>
+        <button class="ci-copy" type="button" data-copy="docker run ghcr.io/bandeira-tech/b3nd/b3nd-node:latest" aria-label="Copy docker command">
+          <span class="ci-copy-label">copy</span>
+        </button>
+      </div>
     </div>
     <div class="ci-cell">
       <span class="ci-kicker">or ship to firecat</span>
-      <code class="ci-cmd">bnd push --to firecat</code>
+      <div class="ci-row">
+        <code class="ci-cmd">bnd push --to firecat</code>
+        <button class="ci-copy" type="button" data-copy="bnd push --to firecat" aria-label="Copy push command">
+          <span class="ci-copy-label">copy</span>
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -929,6 +944,7 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
       <span class="foot-h">network</span>
       <a href="https://testnet-evergreen.fire.cat">firecat testnet</a>
       <a href="https://fire.cat">fire.cat</a>
+      <a href="https://jsr.io/@bandeira-tech">jsr · @bandeira-tech</a>
     </div>
 
     <div class="foot-col">

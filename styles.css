@@ -806,11 +806,39 @@ b-3 { font-weight: 400; font-style: normal; font-synthesis: none; }
   letter-spacing: .18em;
   color: var(--ink-mute);
 }
+.ci-row {
+  display: flex; align-items: flex-start; gap: 10px;
+}
 .ci-cmd {
   font-family: var(--mono);
   font-size: 13px;
   color: var(--ink);
   word-break: break-all;
+  flex: 1;
+  line-height: 1.5;
+}
+.ci-copy {
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border: 1px solid var(--rule-2);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  background: transparent;
+  cursor: pointer;
+  transition: color .18s var(--ease-out), border-color .18s var(--ease-out), background-color .18s var(--ease-out);
+}
+.ci-copy:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+.ci-copy.is-copied {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ============================================================
@@ -1083,6 +1111,7 @@ a.proof-card { color: inherit; }
 .proof-card:hover {
   border-color: var(--accent-border);
   transform: translateY(-2px);
+  box-shadow: 0 12px 32px -16px color-mix(in srgb, var(--accent), transparent 76%);
 }
 .proof-tag {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1240,6 +1269,20 @@ a.proof-card { color: inherit; }
   border-bottom: 1px dashed var(--rule);
   align-items: start;
   position: relative;
+  transition: background-color .35s var(--ease-out);
+}
+.tl-row::before {
+  content: "";
+  position: absolute;
+  inset: 12px -16px;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .35s var(--ease-out);
+}
+.tl-row:hover::before {
+  opacity: 1;
 }
 @media (max-width: 720px) {
   .tl-row { grid-template-columns: 1fr; gap: 12px; }
