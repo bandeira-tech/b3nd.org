@@ -13,7 +13,19 @@ The public marketing site at **b3nd.org**, deployed via **Cloudflare Pages**:
 - Brand assets at `brand/b3nd.css` + `brand/b3nd.js` (the `<b-3>` custom element)
 - Mode toggle implemented in `app.js`, persisted as localStorage key `b3nd.mode` with `html[data-mode="light"]`
 
-## The current message (v10, deployed 2026-06-20)
+## The current message (v11, deployed 2026-06-21)
+
+v11 is v10's nine-beat narrative ported into the canonical brand
+webshell (`~/ws/b3nd-brand/webshell/shell.html`) — shell tokens,
+chrome (top + desktop bottom rail), nav drawer, scroll-snap panel
+grammar with addressable `.panel-head`, type scale, components,
+theme contract (`b3nd-theme` + `data-theme`). Panels are grouped
+into five tiers: **intro · surface · proof · who · in**.
+
+Full spec: `docs/superpowers/specs/2026-06-20-b3nd-org-v11-shell-port.md`.
+v10 is preserved at `/v10.html`.
+
+## The previous message (v10, in archive)
 
 **Hero**: `b3nd is digital spellcraft.` — austere, single declarative sentence,
 no CTA. Its job is *intrigue and hold*, not five-second legibility.
@@ -105,10 +117,14 @@ Functions); use `npx wrangler pages dev .` if you need it.
 
 ## File map
 
-- `index.html` — the v10 page (hero + 9 beats inline-styled, references `brand/` + `app.js`)
-- `styles.css` — legacy v9 stylesheet, currently unused by v10 (kept loaded but no
-  active rules consumed). Will likely be removed when the shell refactor lands.
-- `app.js` — mode toggle, signup form handler, copy buttons. Survived v10.
+- `index.html` — the live v11 page (nine panels in five tiers, built inside the
+  brand webshell; inline-styled, registry-driven runtime, references `brand/`).
+  Theme contract: `localStorage 'b3nd-theme'` + `html[data-theme]`.
+- `v10.html` — archived v10 page (hand-rolled chrome + tokens, theme contract
+  `localStorage 'b3nd.mode'` + `html[data-mode]`). Still wired to `app.js`.
+- `styles.css` — legacy v9 stylesheet, no longer consumed. Slated for removal.
+- `app.js` — mode toggle (v10 contract), signup form handler, copy buttons.
+  v11 inlines its own signup handler; only `v10.html` still loads `app.js`.
 - `brand/b3nd.css` + `brand/b3nd.js` — the `<b-3>` wordmark element. Canonical.
 - `functions/api/signup.ts` (Pages Functions) — email capture into the `SIGNUPS` KV.
 - `wrangler.toml` — Cloudflare Pages project config.
@@ -119,6 +135,6 @@ Functions); use `npx wrangler pages dev .` if you need it.
 - **Commit on each discrete change.** v9.3 → v10 → v10.1 are visible in `git log`;
   keep that pattern. Use `b3nd.org · vN · short description` as the subject prefix.
 - **Verify in a browser before claiming done.** Workspace rule (UI/frontend changes).
-- **Preserve the v9.3 commit (53c182b) as the fallback** until the shell refactor
-  has shipped — that page is the last "legible benefit" version of the site and
-  a known-good reference if v10 needs to be reverted.
+- **Preserve the v9.3 commit (53c182b) as the fallback** — that page is the last
+  "legible benefit" version of the site and a known-good reference if v11 needs
+  to be reverted. v10 also remains accessible at `/v10.html` for direct comparison.
