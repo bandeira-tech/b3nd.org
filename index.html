@@ -113,20 +113,35 @@
         <span class="dot live"></span>
         <span>a framework by bandeira.tech · firecat testnet live</span>
       </div>
-      <h1 class="hero-h1">
-        <span class="word w1">Build.</span>
-        <span class="word w2">Share.</span>
-        <span class="word w3">Own.</span>
+      <h1 class="hero-h1 hero-h1-single">
+        Apps that stay yours.
       </h1>
       <p class="hero-lede">
-        <b-3>b3nd</b-3> is the framework for apps that ship in an afternoon,
-        stay yours forever, and pay you back when the network earns.
+        <b-3>b3nd</b-3> is the framework for apps you ship in an afternoon,
+        share with humans and agents, and own forever —
+        by <a class="hero-bt" href="https://bandeira.tech" rel="noreferrer">bandeira.tech</a>.
       </p>
+      <ul class="hero-usps" aria-label="What b3nd gives you">
+        <li class="usp">
+          <span class="usp-num">①</span>
+          <span class="usp-name">Build</span>
+          <span class="usp-line">Ship in an afternoon. Three verbs over one Rig.</span>
+        </li>
+        <li class="usp">
+          <span class="usp-num">②</span>
+          <span class="usp-name">Share</span>
+          <span class="usp-line">Same surface for humans, agents, and the network.</span>
+        </li>
+        <li class="usp">
+          <span class="usp-num">③</span>
+          <span class="usp-name">Own</span>
+          <span class="usp-line">Signed by your key. Portable between any app.</span>
+        </li>
+      </ul>
       <p class="hero-sub">
-        Three verbs — <em class="verb">bend</em>, <em class="verb">move</em>, <em class="verb">save</em>.
-        Ten storage backends. Four transports. One Rig.
-        Signed by your key, encrypted to your key, portable between any app —
-        not the platforms hoarding it.
+        <em class="verb">receive</em> · <em class="verb">read</em> · <em class="verb">observe</em> —
+        in-process, over HTTP, WebSocket, gRPC, MCP.
+        Across ten storage backends. Not the platforms hoarding your data.
       </p>
 
       <form class="signal-form" data-form="signup" action="/api/signup" method="post" novalidate>
@@ -167,7 +182,7 @@
     <aside class="hero-cell" aria-hidden="true">
       <div class="cell cell-depth" data-cell="L2">
         <div class="cell-tag"><span class="dot live"></span> rig — observed live</div>
-        <svg viewBox="0 0 400 400" class="cell-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="a b3nd rig: bend, move, save, with persistence in the network">
+        <svg viewBox="0 0 400 400" class="cell-svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="a b3nd rig: receive, read, observe, replicated and saved across the network">
           <defs>
             <linearGradient id="sediment-grad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%"  stop-color="var(--accent)" stop-opacity="0"/>
@@ -208,14 +223,16 @@
           <circle cx="200" cy="180" r="78" fill="url(#rig-glow)" class="rig-glow"/>
 
           <g class="node rig">
-            <rect x="158" y="148" width="84" height="64" rx="10"
+            <rect x="148" y="146" width="104" height="68" rx="10"
                   fill="var(--accent)" stroke="var(--accent)" stroke-width="1.4"/>
-            <text x="200" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="10"
+            <text x="200" y="166" text-anchor="middle" font-family="JetBrains Mono" font-size="10"
                   fill="var(--bg)" font-weight="600" letter-spacing="2">RIG</text>
-            <text x="200" y="190" text-anchor="middle" font-family="JetBrains Mono" font-size="8.5"
-                  fill="var(--bg)" letter-spacing="1.4">bend · move · save</text>
-            <text x="200" y="202" text-anchor="middle" font-family="JetBrains Mono" font-size="7.5"
-                  fill="var(--bg)" opacity="0.7">3 verbs · 1 surface</text>
+            <text x="200" y="182" text-anchor="middle" font-family="JetBrains Mono" font-size="8"
+                  fill="var(--bg)" letter-spacing=".5">receive</text>
+            <text x="200" y="193" text-anchor="middle" font-family="JetBrains Mono" font-size="8"
+                  fill="var(--bg)" letter-spacing=".5">read · observe</text>
+            <text x="200" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="7"
+                  fill="var(--bg)" opacity="0.7" letter-spacing=".5">3 verbs · 1 surface</text>
           </g>
 
           <g class="node store">
@@ -225,16 +242,16 @@
           </g>
 
           <!-- edges left -> rig -> peer -->
-          <path d="M110,180 L158,180" stroke="var(--accent)" stroke-width="1.8" fill="none" marker-end="url(#arrowhead)" class="edge edge-1"/>
-          <path d="M242,180 L290,180" stroke="var(--accent)" stroke-width="1.8" fill="none" marker-end="url(#arrowhead)" class="edge edge-2"/>
+          <path d="M110,180 L148,180" stroke="var(--accent)" stroke-width="1.8" fill="none" marker-end="url(#arrowhead)" class="edge edge-1"/>
+          <path d="M252,180 L290,180" stroke="var(--accent)" stroke-width="1.8" fill="none" marker-end="url(#arrowhead)" class="edge edge-2"/>
 
           <!-- verb labels -->
-          <text x="134" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--ink-mute)" letter-spacing="2">bend</text>
-          <text x="266" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--ink-mute)" letter-spacing="2">move</text>
+          <text x="129" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="1.5">receive</text>
+          <text x="271" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--ink-mute)" letter-spacing="1.5">send</text>
 
           <!-- save line: down into the sediment -->
           <line x1="40" y1="260" x2="360" y2="260" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
-          <path d="M200,212 L200,258" stroke="var(--accent)" stroke-width="1.6" fill="none"
+          <path d="M200,214 L200,258" stroke="var(--accent)" stroke-width="1.6" fill="none"
                 stroke-dasharray="2 3" marker-end="url(#arrowhead)" class="edge edge-3"/>
           <text x="208" y="248" font-family="JetBrains Mono" font-size="10" fill="var(--ink-mute)" letter-spacing="2">save</text>
 
@@ -252,10 +269,10 @@
 
           <!-- traveling pulses on the wires -->
           <circle r="3" fill="var(--accent)" class="pulse pulse-1">
-            <animateMotion dur="3.4s" repeatCount="indefinite" path="M110,180 L158,180" begin="1.4s"/>
+            <animateMotion dur="3.4s" repeatCount="indefinite" path="M110,180 L148,180" begin="1.4s"/>
           </circle>
           <circle r="3" fill="var(--accent)" class="pulse pulse-2">
-            <animateMotion dur="3.4s" repeatCount="indefinite" path="M242,180 L290,180" begin="2.0s"/>
+            <animateMotion dur="3.4s" repeatCount="indefinite" path="M252,180 L290,180" begin="2.0s"/>
           </circle>
           <circle r="3" fill="var(--accent)" class="pulse pulse-3">
             <animateMotion dur="4.4s" repeatCount="indefinite" path="M200,212 L200,300" begin="2.6s"/>
@@ -270,15 +287,15 @@
       <span>build</span><span aria-hidden="true">·</span>
       <span>share</span><span aria-hidden="true">·</span>
       <span>own</span><span aria-hidden="true">·</span>
-      <span>bend</span><span aria-hidden="true">·</span>
-      <span>move</span><span aria-hidden="true">·</span>
-      <span>save</span><span aria-hidden="true">·</span>
+      <span>receive</span><span aria-hidden="true">·</span>
+      <span>read</span><span aria-hidden="true">·</span>
+      <span>observe</span><span aria-hidden="true">·</span>
       <span>build</span><span aria-hidden="true">·</span>
       <span>share</span><span aria-hidden="true">·</span>
       <span>own</span><span aria-hidden="true">·</span>
-      <span>bend</span><span aria-hidden="true">·</span>
-      <span>move</span><span aria-hidden="true">·</span>
-      <span>save</span><span aria-hidden="true">·</span>
+      <span>receive</span><span aria-hidden="true">·</span>
+      <span>read</span><span aria-hidden="true">·</span>
+      <span>observe</span><span aria-hidden="true">·</span>
     </div>
   </div>
 </section>
@@ -446,12 +463,14 @@
       <p>
         Adding a feature should not require migrating a database. In <b-3>b3nd</b-3>,
         capabilities are programs (classifiers) wired to handlers (pure transforms)
-        on a Rig. New flow = new wiring. Storage stays where it is.
+        on a <code>Rig</code>. New flow = new route. Storage stays where it is.
       </p>
-      <pre><code><span class="c-com">// add a capability to an existing rig</span>
-rig.bend(<span class="c-str">"comment://*"</span>, <span class="c-com">/* program */</span>);
-rig.on(<span class="c-str">"comment://*"</span>, <span class="c-com">/* handler */</span>);
-rig.move.http(<span class="c-num">8080</span>); <span class="c-com">// already serving</span></code></pre>
+      <pre><code><span class="c-com">// add a route and a reaction → already serving</span>
+<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
+  routes: { receive: [<span class="c-fn">connection</span>(save, [<span class="c-str">"comment://**"</span>])] },
+  reactions: { <span class="c-str">"comment://**"</span>: notifyMods },
+});
+Deno.<span class="c-fn">serve</span>({ port: <span class="c-num">8080</span> }, <span class="c-fn">httpApi</span>(rig));</code></pre>
     </div>
 
     <div class="arch-card" data-arc="security">
@@ -476,18 +495,22 @@ rig.move.http(<span class="c-num">8080</span>); <span class="c-com">// already s
       <div class="arc-head"><span class="arc-num">3.3</span><span class="arc-tag">data operations</span></div>
       <h3>Ten storage backends. One contract.</h3>
       <p>
-        <code>EntityStore</code> is the contract: <code>put</code>, <code>get</code>,
-        <code>list</code>, <code>delete</code>. Memory, Postgres, SQLite, Mongo,
-        Elasticsearch, S3, FS, IPFS, localStorage, IndexedDB — all the same
-        surface. Multi-store writes broadcast. Reads try each in order.
+        <code>EntityStore</code> is the contract: <code>write</code>, <code>read</code>,
+        <code>delete</code>. Memory, Postgres, SQLite, Mongo, Elasticsearch, S3, FS,
+        IPFS, localStorage, IndexedDB — all the same surface. Compose multiple
+        stores at the Rig level: receive broadcasts, read takes the first hit.
         Swap substrates by config, not by rewrite.
       </p>
-      <pre><code><span class="c-key">const</span> store = <span class="c-fn">multi</span>([
-  <span class="c-fn">indexedDb</span>({ name: <span class="c-str">"local"</span> }),
-  <span class="c-fn">httpStore</span>({ url: <span class="c-str">"https://firecat"</span> }),
-]);
-<span class="c-key">await</span> store.<span class="c-fn">put</span>(entity); <span class="c-com">// → both</span>
-<span class="c-key">await</span> store.<span class="c-fn">get</span>(uri);   <span class="c-com">// → first hit wins</span></code></pre>
+      <pre><code><span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
+  routes: {
+    receive: [<span class="c-fn">connection</span>(local, [<span class="c-str">"**"</span>]),
+              <span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
+    read:    [<span class="c-fn">connection</span>(local, [<span class="c-str">"**"</span>]),
+              <span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
+  },
+});
+<span class="c-key">await</span> rig.<span class="c-fn">receive</span>([[uri, payload]]); <span class="c-com">// → broadcast</span>
+<span class="c-key">await</span> rig.<span class="c-fn">read</span>([uri]);              <span class="c-com">// → first hit wins</span></code></pre>
     </div>
 
     <div class="arch-card" data-arc="flows">
@@ -533,26 +556,33 @@ rig.move.http(<span class="c-num">8080</span>); <span class="c-com">// already s
         <span class="code-tag">define</span>
         <span class="code-file">my-app/rig.ts</span>
       </div>
-      <pre><code><span class="c-com">// b3nd-core gives you the foundation. b3nd-save the store.</span>
-<span class="c-com">// b3nd-move the surfaces (http, ws, grpc, mcp).</span>
-<span class="c-key">import</span> { <span class="c-fn">Rig</span> }      <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-core"</span>;
-<span class="c-key">import</span> { <span class="c-fn">sqlite</span> }   <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save"</span>;
-<span class="c-key">import</span> { <span class="c-fn">http</span> }     <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-move"</span>;
+      <pre><code><span class="c-com">// b3nd-core: Rig, connections. b3nd-save: stores.</span>
+<span class="c-com">// b3nd-move: surfaces (http, ws, grpc, mcp).</span>
+<span class="c-key">import</span> { <span class="c-fn">connection</span>, <span class="c-fn">Rig</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-core"</span>;
+<span class="c-key">import</span> { <span class="c-fn">SaveClient</span>, <span class="c-fn">passThroughRecord</span> }
+       <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save/clients"</span>;
+<span class="c-key">import</span> { <span class="c-fn">SqliteStore</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save/sqlite"</span>;
+<span class="c-key">import</span> { <span class="c-fn">TYPE_TAGS</span> }   <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-save/entity"</span>;
+<span class="c-key">import</span> { <span class="c-fn">httpApi</span> }     <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-move/http/service"</span>;
 
-<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({ store: <span class="c-fn">sqlite</span>(<span class="c-str">"./.b3nd"</span>) });
+<span class="c-key">const</span> notes = { name: <span class="c-str">"notes"</span>, fields: [
+  { name: <span class="c-str">"title"</span>, type: [TYPE_TAGS.STRING] },
+  { name: <span class="c-str">"body"</span>,  type: [TYPE_TAGS.STRING] },
+]};
+<span class="c-key">const</span> save = <span class="c-key">new</span> <span class="c-fn">SaveClient</span>(
+  passThroughRecord, notes, <span class="c-key">new</span> <span class="c-fn">SqliteStore</span>(<span class="c-str">"./.b3nd/notes.db"</span>),
+);
+<span class="c-key">await</span> save.<span class="c-fn">init</span>();
 
-<span class="c-com">// classify incoming messages by their URI shape ...</span>
-rig.<span class="c-fn">bend</span>(<span class="c-str">"note://*"</span>, (uri, payload) => ({
-  code: <span class="c-str">"note.created"</span>, payload,
-}));
+<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
+  routes: {
+    receive: [<span class="c-fn">connection</span>(save, [<span class="c-str">"note://**"</span>])],
+    read:    [<span class="c-fn">connection</span>(save, [<span class="c-str">"note://**"</span>])],
+  },
+});
 
-<span class="c-com">// ... and react. pure functions in, Output[] out.</span>
-rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg) =&gt; [
-  { code: <span class="c-str">"save"</span>, payload: msg.payload },
-]);
-
-<span class="c-key">await</span> <span class="c-fn">http</span>(rig, { port: <span class="c-num">8080</span> });
-<span class="c-com">// → ready over http, ws, mcp. one rig, three doors.</span></code></pre>
+Deno.<span class="c-fn">serve</span>({ port: <span class="c-num">8080</span> }, <span class="c-fn">httpApi</span>(rig));
+<span class="c-com">// → live on http. same rig also serves ws, grpc, mcp.</span></code></pre>
     </article>
 
     <article class="code-card">
@@ -562,19 +592,28 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
       </div>
       <pre><code><span class="c-com">// the surface is symmetric.</span>
 <span class="c-com">// in-process, http, ws, mcp: same three verbs.</span>
-<span class="c-key">import</span> { <span class="c-fn">httpClient</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-move"</span>;
+<span class="c-key">import</span> { <span class="c-fn">connection</span>, <span class="c-fn">Rig</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-core"</span>;
+<span class="c-key">import</span> { <span class="c-fn">HttpClient</span> } <span class="c-key">from</span> <span class="c-str">"@bandeira-tech/b3nd-move/http/client"</span>;
 
-<span class="c-key">const</span> app = <span class="c-fn">httpClient</span>(<span class="c-str">"https://app.example"</span>);
+<span class="c-key">const</span> remote = <span class="c-key">new</span> <span class="c-fn">HttpClient</span>({ url: <span class="c-str">"https://app.example"</span> });
+<span class="c-key">const</span> rig = <span class="c-key">new</span> <span class="c-fn">Rig</span>({
+  routes: {
+    receive: [<span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
+    read:    [<span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
+    observe: [<span class="c-fn">connection</span>(remote, [<span class="c-str">"**"</span>])],
+  },
+});
 
-<span class="c-key">await</span> app.<span class="c-fn">receive</span>([
-  <span class="c-str">"note://2026/06/20/first"</span>,
-  { title: <span class="c-str">"build, share, own"</span> },
+<span class="c-key">await</span> rig.<span class="c-fn">receive</span>([
+  [<span class="c-str">"note://2026/06/20/first"</span>, { title: <span class="c-str">"build, share, own"</span> }],
 ]);
 
-<span class="c-key">const</span> n = <span class="c-key">await</span> app.<span class="c-fn">read</span>(<span class="c-str">"note://2026/06/20/first"</span>);
+<span class="c-key">const</span> [[, note]] = <span class="c-key">await</span> rig.<span class="c-fn">read</span>([<span class="c-str">"note://2026/06/20/first"</span>]);
 
-<span class="c-key">for</span> <span class="c-key">await</span> (<span class="c-key">const</span> n <span class="c-key">of</span> app.<span class="c-fn">observe</span>(<span class="c-str">"note://*"</span>)) {
-  <span class="c-fn">render</span>(n); <span class="c-com">// live, signed, content-addressed.</span>
+<span class="c-key">const</span> ac = <span class="c-key">new</span> AbortController();
+<span class="c-key">for</span> <span class="c-key">await</span> (<span class="c-key">const</span> uris <span class="c-key">of</span> rig.<span class="c-fn">observe</span>([<span class="c-str">"note://**"</span>], ac.signal)) {
+  <span class="c-key">for</span> (<span class="c-key">const</span> [uri, payload] <span class="c-key">of</span> <span class="c-key">await</span> rig.<span class="c-fn">read</span>(uris))
+    <span class="c-fn">render</span>(uri, payload); <span class="c-com">// live, signed, content-addressed.</span>
 }</code></pre>
     </article>
   </div>
@@ -630,9 +669,9 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
         <span class="t-line t-ok">→ uploading to <span class="t-em">firecat://evergreen</span></span>
         <span class="t-line t-ok">→ ready · 124 ms · cold start</span>
         <span class="t-line t-ok">→ open <span class="t-em">https://app-64b9.firecat.run</span></span>
-        <span class="t-line t-mute">  bend  ▸ comment://*  ▸ note.created</span>
-        <span class="t-line t-mute">  move  ▸ http :443 · ws :443 · mcp :443</span>
-        <span class="t-line t-mute">  save  ▸ broadcast → memory · sqlite · evergreen</span>
+        <span class="t-line t-mute">  routes  ▸ receive · read · observe</span>
+        <span class="t-line t-mute">  move    ▸ http :443 · ws :443 · grpc :443 · mcp :443</span>
+        <span class="t-line t-mute">  save    ▸ broadcast → memory · sqlite · evergreen</span>
         <span class="t-line"><span class="t-prompt">~/ws/my-app</span> <span class="t-cursor">▍</span></span>
       </div>
     </div>
