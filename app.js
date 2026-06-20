@@ -88,5 +88,20 @@
     if (cls) el.classList.add(cls);
   }
 
+  /* ---------- live signup count ---------- */
+  const countEl = document.querySelector('[data-signup-count]');
+  if (countEl) {
+    fetch('/api/signup-count', { headers: { 'accept': 'application/json' } })
+      .then((r) => r.ok ? r.json() : null)
+      .then((j) => {
+        if (!j) return;
+        const n = Number(j.count) || 0;
+        if (n > 0) {
+          countEl.textContent = n + ' on the list';
+          countEl.classList.add('is-loaded');
+        }
+      })
+      .catch(() => {});
+  }
   /* scroll reveal removed — content always rendered. */
 })();

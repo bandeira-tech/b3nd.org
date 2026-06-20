@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>404 · b3nd</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050807'/%3E%3Ctext x='32' y='48' font-family='American Typewriter,serif' font-size='52' text-anchor='middle' fill='%2339FF88'%3E3%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-5">
+<link rel="stylesheet" href="/styles.css?v=20260620-5">
+<script defer src="/brand/b3nd.js?v=20260620-5"></script>
+<style>
+  .nope {
+    min-height: 80vh;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(80px, 12vw, 160px) var(--pad) 64px;
+    display: flex; flex-direction: column; gap: 22px;
+    justify-content: center;
+  }
+  .nope-num {
+    font-family: var(--mono);
+    font-size: clamp(64px, 12vw, 160px);
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+  .nope h1 {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 600;
+    letter-spacing: -.02em;
+    line-height: 1.05;
+    margin: 0;
+    max-width: 24ch;
+  }
+  .nope p {
+    font-size: clamp(15px, 1.3vw, 18px);
+    color: var(--ink-dim);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 56ch;
+  }
+  .nope a.back {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    background: var(--accent);
+    color: var(--bg);
+    border-radius: var(--radius);
+    font-weight: 500;
+    width: max-content;
+    margin-top: 12px;
+  }
+  .nope a.back:hover { background: color-mix(in srgb, var(--accent), var(--ink) 18%); }
+  .nope-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-mute);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--rule);
+  }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <a class="brand-mark" href="/" aria-label="b3nd home"><b-3>b3nd</b-3></a>
+  <nav class="site-nav" aria-label="Primary">
+    <a href="/#shift">the shift</a>
+    <a href="/#proof">proof</a>
+    <a href="/#join" class="primary">get early access</a>
+  </nav>
+</header>
+
+<main class="nope">
+  <span class="nope-num">404</span>
+  <h1>That URI didn't classify into anything we serve.</h1>
+  <p>
+    On <b-3>b3nd</b-3>, every URI is a classifier — it maps to a code, and
+    the code resolves into a handler. This one classified into nothing.
+    No code. No handler. Just an unfilled shape on the network.
+  </p>
+  <a class="back" href="/">
+    <span>back to b3nd.org</span>
+    <span aria-hidden="true">→</span>
+  </a>
+  <span class="nope-meta">empty the moats. ship the work.</span>
+</main>
+</body>
+</html>
