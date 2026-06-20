@@ -400,14 +400,13 @@
    * ===================================================================== */
 
   /* SHELL-CANDIDATE 01 — .panel.hero
-     A full-bleed centered hero variant. The .panel head is suppressed
-     and content centers vertically + horizontally. Used by marketing
-     surfaces; the shell currently only has tier/section panels. */
+     Full-bleed hero variant. Content stays top-left aligned to match
+     the rest of the shell's panel grammar (the masthead reads like
+     any other panel, just with display-scale type). */
   .panel.hero{
-    align-items:center;justify-content:center;text-align:center;
-    padding-top:max(80px, 8vh); padding-bottom:max(80px, 8vh);
+    padding-top:max(60px, 6vh); padding-bottom:max(80px, 8vh);
+    gap:max(16px, 2vh);
   }
-  .panel.hero > .panel-head{position:absolute;top:20px;left:20px;right:20px}
   .panel.hero .hero-mark{
     /* the brand "3" hangs 0.27em below baseline (D5) — give it room
        below the wordmark so it never collides with the tagline. */
@@ -495,7 +494,7 @@
     border-top:1px solid var(--rule);
     padding:32px 20px 40px;
     font:12px/1.6 var(--mono);color:var(--ink-mute);
-    letter-spacing:.04em;text-align:center;
+    letter-spacing:.04em;
   }
   .site-foot a{color:var(--ink-mute);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s, color .15s}
   .site-foot a:hover{color:var(--ink);border-color:var(--ink-mute)}
