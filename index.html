@@ -739,10 +739,29 @@
     </div>
   </section>
 
-  <!-- 07 · TEAMS -->
-  <section class="panel" id="teams" data-tier="proof" data-name="for teams">
+  <!-- 07 · SKETCH — what the surface actually looks like, in code -->
+  <section class="panel" id="sketch" data-tier="proof" data-name="sketch">
     <div class="panel-head">
       <span class="num">07</span>
+      <span class="tier">proof</span><span class="sep">/</span><span class="name">sketch</span>
+      <a class="anchor" href="#sketch">#sketch</a>
+    </div>
+    <h2 class="h-2">The whole surface, in five lines.</h2>
+    <p class="lede">One import. One Rig. Six verbs. If your agent has ever written against an SDK, it already knows this shape.</p>
+<pre class="code"><code>import { Rig } from "@bandeira-tech/b3nd-core";
+
+const rig = new Rig({ routes: { /* … */ } });
+
+await rig.receive([[uri, payload]]);     // move · save
+const [data]  = await rig.read([uri]);   // read
+for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
+    <p class="mute">deno · node · browser · agent · all the same surface.</p>
+  </section>
+
+  <!-- 08 · TEAMS -->
+  <section class="panel" id="teams" data-tier="proof" data-name="for teams">
+    <div class="panel-head">
+      <span class="num">08</span>
       <span class="tier">proof</span><span class="sep">/</span><span class="name">for teams</span>
       <a class="anchor" href="#teams">#teams</a>
     </div>
@@ -754,10 +773,10 @@
     </div>
   </section>
 
-  <!-- 08 · OWNERSHIP -->
+  <!-- 09 · OWNERSHIP -->
   <section class="panel" id="ownership" data-tier="proof" data-name="ownership">
     <div class="panel-head">
-      <span class="num">08</span>
+      <span class="num">09</span>
       <span class="tier">proof</span><span class="sep">/</span><span class="name">ownership</span>
       <a class="anchor" href="#ownership">#ownership</a>
     </div>
@@ -775,10 +794,10 @@
 
   <!-- ===================== TIER · WHO ===================== -->
 
-  <!-- 09 · AUDIENCES -->
+  <!-- 10 · AUDIENCES -->
   <section class="panel" id="audiences" data-tier="who" data-name="audiences">
     <div class="panel-head">
-      <span class="num">09</span>
+      <span class="num">10</span>
       <span class="tier">who</span><span class="sep">/</span><span class="name">audiences</span>
       <a class="anchor" href="#audiences">#audiences</a>
     </div>
@@ -810,10 +829,10 @@
 
   <!-- ===================== TIER · IN ===================== -->
 
-  <!-- 10 · COMMUNITY -->
+  <!-- 11 · COMMUNITY -->
   <section class="panel" id="community" data-tier="in" data-name="community">
     <div class="panel-head">
-      <span class="num">10</span>
+      <span class="num">11</span>
       <span class="tier">in</span><span class="sep">/</span><span class="name">community</span>
       <a class="anchor" href="#community">#community</a>
     </div>
