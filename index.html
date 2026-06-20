@@ -30,15 +30,35 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050807'/%3E%3Ctext x='32' y='48' font-family='American Typewriter,serif' font-size='52' text-anchor='middle' fill='%2339FF88'%3E3%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://b3nd.org/">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "b3nd",
+  "alternateName": "b3nd — build, share, own.",
+  "description": "b3nd is the data-first foundation underneath apps that ship faster, stay yours, and pay you back. Three verbs (receive, read, observe) over a uniform surface — across ten storage backends and four transports.",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "url": "https://b3nd.org",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": {
+    "@type": "Organization",
+    "name": "Bandeira Tech",
+    "url": "https://bandeira.tech"
+  }
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-2">
-<link rel="stylesheet" href="/styles.css?v=20260620-2">
-<script defer src="/brand/b3nd.js?v=20260620-2"></script>
-<script defer src="/app.js?v=20260620-2"></script>
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-3">
+<link rel="stylesheet" href="/styles.css?v=20260620-3">
+<script defer src="/brand/b3nd.js?v=20260620-3"></script>
+<script defer src="/app.js?v=20260620-3"></script>
 </head>
 <body>
 
@@ -54,6 +74,7 @@
     <a href="#audiences">who's it for</a>
     <a href="#architecture">how it works</a>
     <a href="#proof">proof</a>
+    <a href="#timeline">what's next</a>
     <a href="#join" class="primary">get early access</a>
   </nav>
   <button class="mode-toggle" type="button" data-action="toggle-mode" aria-label="Toggle dark or light surface">
@@ -217,6 +238,30 @@
       <span>move</span><span aria-hidden="true">·</span>
       <span>save</span><span aria-hidden="true">·</span>
     </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRUST STRIP — composed from open foundations
+     ============================================================ -->
+<section class="trust" aria-label="Open foundations B3nd composes">
+  <div class="trust-inner">
+    <span class="trust-kicker">composed from open foundations</span>
+    <ul class="trust-list">
+      <li>Deno + JSR</li>
+      <li aria-hidden="true">·</li>
+      <li>TypeScript</li>
+      <li aria-hidden="true">·</li>
+      <li>Ed25519 / X25519</li>
+      <li aria-hidden="true">·</li>
+      <li>RFC 8785 JCS</li>
+      <li aria-hidden="true">·</li>
+      <li>SQLite · Postgres · S3 · IPFS</li>
+      <li aria-hidden="true">·</li>
+      <li>HTTP · WebSocket · gRPC · MCP</li>
+      <li aria-hidden="true">·</li>
+      <li>Cloudflare Workers · Vercel Edge</li>
+    </ul>
   </div>
 </section>
 
@@ -652,6 +697,71 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
       </li>
     </ul>
   </div>
+</section>
+
+<!-- ============================================================
+     TIMELINE — what's coming, in order
+     ============================================================ -->
+<section class="timeline" id="timeline">
+  <div class="section-head">
+    <span class="num">06</span>
+    <span class="name">what's next</span>
+  </div>
+
+  <h2 class="section-title">Already shipping. Here's the order.</h2>
+  <p class="section-lede">
+    Public motion, public dates. Every line below is a thing we're shipping,
+    not a roadmap promise.
+  </p>
+
+  <ol class="timeline-list">
+    <li class="tl-row tl-now">
+      <div class="tl-marker">
+        <span class="dot live"></span>
+        <span class="tl-when">now</span>
+      </div>
+      <div class="tl-body">
+        <h3>Firecat evergreen testnet · live</h3>
+        <p>Open testnet hosting B3nd nodes. Public endpoints, free-tier deploy targets, fair-use throttling.</p>
+      </div>
+    </li>
+    <li class="tl-row">
+      <div class="tl-marker">
+        <span class="tl-when">this month</span>
+      </div>
+      <div class="tl-body">
+        <h3>Listorama v0.0.1 alpha · public</h3>
+        <p>The lighthouse app — lists, audience, attention marketplace — opens its waitlist to the early-signal list first.</p>
+      </div>
+    </li>
+    <li class="tl-row">
+      <div class="tl-marker">
+        <span class="tl-when">first sprint</span>
+      </div>
+      <div class="tl-body">
+        <h3>Monthly build sprint · round 01</h3>
+        <p>One brief, one week, five prize categories. Best video demo · serious business · funniest · community choice · your language.</p>
+      </div>
+    </li>
+    <li class="tl-row">
+      <div class="tl-marker">
+        <span class="tl-when">rolling</span>
+      </div>
+      <div class="tl-body">
+        <h3>Bounty board opens</h3>
+        <p>Well-specified work. Small-and-often payouts in crypto. Documented in the open.</p>
+      </div>
+    </li>
+    <li class="tl-row tl-future">
+      <div class="tl-marker">
+        <span class="tl-when">later this year</span>
+      </div>
+      <div class="tl-body">
+        <h3>Flagship hackathons · co-located</h3>
+        <p>Tier-2 events once the community machine is running steadily. DevPost / MLH / ETHGlobal / lablab.ai tracks.</p>
+      </div>
+    </li>
+  </ol>
 </section>
 
 <!-- ============================================================

@@ -1010,6 +1010,96 @@ a.proof-card { color: inherit; }
 }
 
 /* ============================================================
+ *  TRUST STRIP
+ * ============================================================ */
+.trust {
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--bg), var(--ink) 3%);
+}
+.trust-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 24px var(--pad);
+  display: flex; align-items: center; gap: 24px;
+  flex-wrap: wrap;
+}
+.trust-kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.trust-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-dim);
+  letter-spacing: .04em;
+}
+.trust-list li[aria-hidden="true"] {
+  color: var(--ink-mute);
+}
+
+/* ============================================================
+ *  TIMELINE
+ * ============================================================ */
+.timeline {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(80px, 10vw, 140px) var(--pad);
+}
+.timeline-list {
+  list-style: none; padding: 0; margin: 0;
+  border-top: 1px dashed var(--rule);
+}
+.tl-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 36px;
+  padding: 32px 0;
+  border-bottom: 1px dashed var(--rule);
+  align-items: start;
+  position: relative;
+}
+@media (max-width: 720px) {
+  .tl-row { grid-template-columns: 1fr; gap: 12px; }
+}
+.tl-marker {
+  display: flex; align-items: center; gap: 10px;
+}
+.tl-when {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.tl-now .tl-when {
+  color: var(--accent);
+}
+.tl-future .tl-when {
+  color: var(--ink-mute);
+  opacity: 0.7;
+}
+.tl-body h3 {
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 600;
+  letter-spacing: -.012em;
+  margin: 0 0 8px;
+}
+.tl-body p {
+  font-size: 15px;
+  color: var(--ink-dim);
+  margin: 0;
+  max-width: 56ch;
+  line-height: 1.6;
+}
+
+/* ============================================================
  *  CTA
  * ============================================================ */
 .cta {
