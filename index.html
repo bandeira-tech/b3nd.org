@@ -55,10 +55,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-3">
-<link rel="stylesheet" href="/styles.css?v=20260620-3">
-<script defer src="/brand/b3nd.js?v=20260620-3"></script>
-<script defer src="/app.js?v=20260620-3"></script>
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-4">
+<link rel="stylesheet" href="/styles.css?v=20260620-4">
+<script defer src="/brand/b3nd.js?v=20260620-4"></script>
+<script defer src="/app.js?v=20260620-4"></script>
 </head>
 <body>
 
@@ -120,6 +120,17 @@
           no spam · we tell you when the first build sprint opens, and when the network goes live for new apps
         </p>
       </form>
+
+      <div class="hero-secondary">
+        <a class="hero-2cta" href="#code">
+          <span>see it in code</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+        <a class="hero-2cta" href="#proof">
+          <span>see it running</span>
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
     </div>
 
     <aside class="hero-cell" aria-hidden="true">
@@ -559,6 +570,45 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
     <div class="ci-cell">
       <span class="ci-kicker">or ship to firecat</span>
       <code class="ci-cmd">bnd push --to firecat</code>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TERMINAL  — bnd push, live-looking
+     ============================================================ -->
+<section class="terminal-block" aria-label="A representative bnd CLI session">
+  <div class="terminal-inner">
+    <div class="terminal">
+      <div class="term-chrome">
+        <span class="term-dot"></span>
+        <span class="term-dot"></span>
+        <span class="term-dot"></span>
+        <span class="term-title">~/ws/my-app · bnd</span>
+        <span class="term-status"><span class="dot live"></span> firecat · evergreen</span>
+      </div>
+      <div class="term-body" data-terminal>
+        <span class="t-line"><span class="t-prompt">~/ws/my-app</span> <span class="t-cmd">$ bnd push --to firecat</span></span>
+        <span class="t-line t-ok">→ packaging rig <span class="t-mute">(sqlite store + http surface)</span></span>
+        <span class="t-line t-ok">→ signing manifest <span class="t-mute">ed25519 · 64b9…1c0a</span></span>
+        <span class="t-line t-ok">→ uploading to <span class="t-em">firecat://evergreen</span></span>
+        <span class="t-line t-ok">→ ready · 124 ms · cold start</span>
+        <span class="t-line t-ok">→ open <span class="t-em">https://app-64b9.firecat.run</span></span>
+        <span class="t-line t-mute">  bend  ▸ comment://*  ▸ note.created</span>
+        <span class="t-line t-mute">  move  ▸ http :443 · ws :443 · mcp :443</span>
+        <span class="t-line t-mute">  save  ▸ broadcast → memory · sqlite · evergreen</span>
+        <span class="t-line"><span class="t-prompt">~/ws/my-app</span> <span class="t-cursor">▍</span></span>
+      </div>
+    </div>
+    <div class="term-aside">
+      <span class="term-kicker">one command</span>
+      <h3 class="term-title2">From your laptop, to a public, paid network.</h3>
+      <p>
+        <code>bnd push</code> packages your rig, signs the manifest with
+        your key, ships it to the network, and gives you a live URL.
+        No build pipeline. No CI. No "what region should I pick."
+        The same surface runs locally and on the wire.
+      </p>
     </div>
   </div>
 </section>
