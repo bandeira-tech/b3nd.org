@@ -747,13 +747,13 @@
       <a class="anchor" href="#sketch">#sketch</a>
     </div>
     <h2 class="h-2">The whole surface, in five lines.</h2>
-    <p class="lede">One import. One Rig. Six verbs. If your agent has ever written against an SDK, it already knows this shape.</p>
+    <p class="lede">One import. One Rig. Three verbs you call. The protocol-side three live in the routes. If your agent has ever written against an SDK, it already knows this shape.</p>
 <pre class="code"><code>import { Rig } from "@bandeira-tech/b3nd-core";
 
-const rig = new Rig({ routes: { /* … */ } });
+const rig = new Rig({ routes: { /* move · save · send */ } });
 
-await rig.receive([[uri, payload]]);     // move · save
-const [data]  = await rig.read([uri]);   // read
+await rig.receive([[uri, payload]]);
+const [data] = await rig.read([uri]);
 for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
     <p class="mute">deno · node · browser · agent · all the same surface.</p>
   </section>
