@@ -76,10 +76,10 @@
   *{box-sizing:border-box;}
 </style>
 
-<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-7">
-<link rel="stylesheet" href="/styles.css?v=20260620-7">
-<script defer src="/brand/b3nd.js?v=20260620-7"></script>
-<script defer src="/app.js?v=20260620-7"></script>
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-10">
+<link rel="stylesheet" href="/styles.css?v=20260620-10">
+<script defer src="/brand/b3nd.js?v=20260620-10"></script>
+<script defer src="/app.js?v=20260620-10"></script>
 </head>
 <body>
 
@@ -848,6 +848,44 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
       </div>
     </li>
   </ol>
+</section>
+
+<!-- ============================================================
+     STEPS — three things to do next
+     ============================================================ -->
+<section class="steps" aria-label="What to do next">
+  <div class="steps-inner">
+    <div class="steps-head">
+      <span class="steps-kicker">three steps</span>
+      <h2>From scrolling, to shipping.</h2>
+    </div>
+    <ol class="steps-list">
+      <li class="step">
+        <span class="step-num">01</span>
+        <div class="step-content">
+          <h3>Install the CLI</h3>
+          <p>One Deno install gets the <code>bnd</code> binary on your path. Works the same on macOS, Linux, Windows.</p>
+          <code class="step-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <div class="step-content">
+          <h3>Wire a rig</h3>
+          <p>Pick a store, declare a handler, choose a transport. One file. No CI, no config, no schema migrations.</p>
+          <code class="step-cmd">bnd init my-app &amp;&amp; cd my-app</code>
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <div class="step-content">
+          <h3>Push to the network</h3>
+          <p>One command. Live URL. Already speaking HTTP, WebSocket, and MCP. You're on Firecat.</p>
+          <code class="step-cmd">bnd push --to firecat</code>
+        </div>
+      </li>
+    </ol>
+  </div>
 </section>
 
 <!-- ============================================================
