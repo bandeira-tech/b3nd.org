@@ -138,9 +138,19 @@
           <span class="btn-arrow" aria-hidden="true">→</span>
         </button>
         <p class="signal-note" data-form-note>
-          no spam · we tell you when the first build sprint opens, and when the network goes live for new apps
+          no spam · first to know when sprints open and apps go live
         </p>
       </form>
+
+      <div class="hero-quickstart" aria-label="Install the CLI now">
+        <span class="hq-or">— or skip the wait —</span>
+        <div class="ci-row">
+          <code class="ci-cmd">deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd</code>
+          <button class="ci-copy" type="button" data-copy="deno install -A -gf jsr:@bandeira-tech/b3nd-cli/bnd" aria-label="Copy install command">
+            <span class="ci-copy-label">copy</span>
+          </button>
+        </div>
+      </div>
 
       <div class="hero-secondary">
         <a class="hero-2cta" href="#code">
@@ -926,12 +936,11 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
       <span class="signup-count" data-signup-count aria-live="polite"></span>
     </div>
     <h2 class="cta-title">
-      Get on the list before the first build sprint opens.
+      Show up before everyone else does.
     </h2>
     <p class="cta-lede">
-      One email. We tell you when the first sprint goes live, when new apps
-      open to the network, and when the bounty board posts work that pays.
-      Nothing else.
+      First in line for build sprints, beta apps, and paid bounties.
+      One email. Nothing else.
     </p>
 
     <form class="signal-form signal-form-lg" data-form="signup" action="/api/signup" method="post" novalidate>

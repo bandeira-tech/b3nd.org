@@ -862,6 +862,26 @@ b-3 { font-weight: 400; font-style: normal; font-synthesis: none; }
 }
 
 /* ============================================================
+ *  HERO QUICKSTART STRIP
+ *  Inline install for devs who don't want to wait on the form.
+ * ============================================================ */
+.hero-quickstart {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px dashed var(--rule-2);
+  border-radius: var(--radius);
+  display: flex; flex-direction: column; gap: 10px;
+  background: rgba(255,255,255,0.015);
+}
+.hq-or {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ============================================================
  *  HERO SECONDARY CTAs
  * ============================================================ */
 .hero-secondary {
