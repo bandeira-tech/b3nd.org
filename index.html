@@ -27,7 +27,12 @@
 <meta property="og:description" content="The data-first foundation underneath apps that ship faster, stay yours, and pay you back.">
 <meta property="og:url" content="https://b3nd.org">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://b3nd.org/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="b3nd — Build. Share. Own. The data-first framework.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://b3nd.org/og.png">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23050807'/%3E%3Ctext x='32' y='48' font-family='American Typewriter,serif' font-size='52' text-anchor='middle' fill='%2339FF88'%3E3%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://b3nd.org/">
@@ -53,12 +58,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="style"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 
-<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-4">
-<link rel="stylesheet" href="/styles.css?v=20260620-4">
-<script defer src="/brand/b3nd.js?v=20260620-4"></script>
-<script defer src="/app.js?v=20260620-4"></script>
+<!-- Critical CSS — first paint without waiting on styles.css. Keeps the
+     dark surface + hero typography stable, avoids any FOUC flash. -->
+<style>
+  :root{--bg:#050807;--ink:#FFFCF8;--accent:#39FF88;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --prose:"Inter",system-ui,sans-serif;}
+  html{color-scheme:dark;background:var(--bg);}
+  html[data-mode="light"]{color-scheme:light;background:#FFFCF8;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--prose);
+    -webkit-font-smoothing:antialiased;}
+  *{box-sizing:border-box;}
+</style>
+
+<link rel="stylesheet" href="/brand/b3nd.css?v=20260620-5">
+<link rel="stylesheet" href="/styles.css?v=20260620-5">
+<script defer src="/brand/b3nd.js?v=20260620-5"></script>
+<script defer src="/app.js?v=20260620-5"></script>
 </head>
 <body>
 
@@ -812,6 +833,42 @@ rig.<span class="c-fn">on</span>(<span class="c-str">"note.created"</span>, (msg
       </div>
     </li>
   </ol>
+</section>
+
+<!-- ============================================================
+     FOUNDER NOTE
+     ============================================================ -->
+<section class="note" aria-label="A short note from the founder">
+  <div class="note-inner">
+    <div class="note-tag">
+      <span>a short note</span>
+    </div>
+    <blockquote class="note-body">
+      <p>
+        Software has spent a decade getting <em>more</em> complicated to do
+        <em>fewer</em> things — more dependencies, more renderers, more
+        opaque platforms, more rented data. The interesting work has been
+        sitting underneath, in the wiring: how data moves, where it
+        persists, what proves it's yours.
+      </p>
+      <p>
+        <b-3>b3nd</b-3> is what falls out when you make that wiring
+        explicit. Three verbs. One Rig. A small, uniform surface that
+        agents can use as easily as humans. Storage that's portable.
+        Identity that's cryptographic. A network whose economics flow
+        to the people doing the work.
+      </p>
+      <p>
+        We're building it in the open. If you're a builder, a creator, or
+        anyone tired of the moats — get on the list. We'll bring you in
+        as the doors open.
+      </p>
+    </blockquote>
+    <footer class="note-sign">
+      <span class="ns-name"><b-3>b3nd</b-3> · rafael bandeira</span>
+      <span class="ns-loc">amsterdam · 2026</span>
+    </footer>
+  </div>
 </section>
 
 <!-- ============================================================
