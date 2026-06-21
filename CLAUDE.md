@@ -95,7 +95,9 @@ as the body. This is a real refactor and deserves its own session.
 
 ## Deploying
 
-Cloudflare Pages, deployed via wrangler:
+Cloudflare Pages, Direct Upload, deployed via wrangler. **`main` is staging; `production` is prod.** The Cloudflare project's "Production branch" setting is `production`, so the `b3nd.org` custom domain follows the `production` branch.
+
+### Ship to staging (default)
 
 ```sh
 # IMPORTANT: the env-set CLOUDFLARE_API_TOKEN lacks Pages permissions for the
@@ -105,7 +107,20 @@ env -u CLOUDFLARE_API_TOKEN npx wrangler pages deploy . \
   --project-name=b3nd-org --branch=main --commit-dirty=true
 ```
 
-`--branch=main` deploys to production. Without it you get a preview URL only.
+Wrangler prints the staging URL (a `*.b3nd-org.pages.dev` alias for the `main` branch). Eyeball there before promoting.
+
+### Promote to prod
+
+```sh
+env -u CLOUDFLARE_API_TOKEN npx wrangler pages deploy . \
+  --project-name=b3nd-org --branch=production --commit-dirty=true
+```
+
+This updates the `b3nd.org` custom domain. Recommended: mirror the git `production` branch to what just shipped, so `git diff main..production` answers "what's on staging that isn't shipped yet":
+
+```sh
+git push origin main:production
+```
 
 Local working artifacts (`v10-*.png` screenshots, `.playwright-mcp/`,
 `.claude/scheduled_tasks.lock`) are gitignored but Pages doesn't respect
