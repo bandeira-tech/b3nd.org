@@ -515,18 +515,56 @@
     .simple-chip{width:64px;height:72px}
   }
 
-  /* SHELL-CANDIDATE 02c — .try-actions
-     Horizontal row of CTA buttons with leading brand SVG, label,
-     trailing arrow. Wraps to stack on narrow viewports. Used on
-     the "try" panel as the page's primary call to action. */
-  .try-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
-  .try-actions .btn{
-    padding:0 22px;min-height:52px;font-size:15px;
+  /* SHELL-CANDIDATE 02c — .try-stack
+     Three vertical blocks (deploy · check · install) on the "try"
+     panel. Buttons are full-width within their column, stacked,
+     uniform shape. Block labels are mono uppercase. Install block
+     hosts a CSS-only radio-driven tabset with code samples. */
+  .try-stack{display:flex;flex-direction:column;gap:32px;max-width:600px;margin-top:8px}
+  .try-block{display:flex;flex-direction:column;gap:10px}
+  .try-block-label{
+    font:10px/1 var(--mono);color:var(--ink-mute);
+    letter-spacing:.18em;text-transform:uppercase;
   }
-  .try-actions .btn svg{width:18px;height:18px;flex-shrink:0}
-  .try-actions .btn .try-arrow{
-    margin-left:4px;font-family:var(--mono);opacity:.65;
+  .try-buttons{display:flex;flex-direction:column;gap:8px}
+  .try-buttons .btn{
+    justify-content:flex-start;width:100%;
+    padding:0 20px;min-height:56px;font-size:15px;gap:14px;
   }
+  .try-buttons .btn svg{width:20px;height:20px;flex-shrink:0}
+  .try-buttons .btn .try-arrow{
+    margin-left:auto;font-family:var(--mono);opacity:.65;
+  }
+
+  .install-tabs{display:flex;flex-direction:column;gap:0;position:relative}
+  .install-tabs input[type="radio"]{
+    position:absolute;opacity:0;pointer-events:none;width:0;height:0;
+  }
+  .install-tab-labels{
+    display:flex;flex-wrap:wrap;gap:0;
+    border-bottom:1px solid var(--rule);margin-bottom:14px;
+  }
+  .install-tab-labels label{
+    padding:10px 14px;cursor:pointer;
+    font:11px/1 var(--mono);color:var(--ink-mute);
+    letter-spacing:.04em;
+    border-bottom:2px solid transparent;
+    margin-bottom:-1px;
+    transition:color .15s, border-color .15s;
+  }
+  .install-tab-labels label:hover{color:var(--ink-dim)}
+  .install-tab-panels > .install-panel{display:none}
+  .install-panel pre.code{margin:0 0 10px}
+  .install-panel pre.code:last-child{margin-bottom:0}
+
+  #tab-backend:checked ~ .install-tab-labels label[for="tab-backend"],
+  #tab-web:checked     ~ .install-tab-labels label[for="tab-web"],
+  #tab-worker:checked  ~ .install-tab-labels label[for="tab-worker"]{
+    color:var(--accent);border-bottom-color:var(--accent);
+  }
+  #tab-backend:checked ~ .install-tab-panels [data-tab="backend"],
+  #tab-web:checked     ~ .install-tab-panels [data-tab="web"],
+  #tab-worker:checked  ~ .install-tab-panels [data-tab="worker"]{display:block}
 
   /* SHELL-CANDIDATE 03 — .manifesto
      Stacked declarative lines with em accents. Used for the symmetry
@@ -976,21 +1014,139 @@
       <a class="anchor" href="#try">#try</a>
     </div>
     <h2 class="h-1">Try it now.</h2>
-    <p class="lede">Open the repo. Wire your Rig. Ship it to a free tier — same shape under both.</p>
+    <p class="lede">Three doors. Pick one.</p>
 
-    <div class="try-actions">
-      <a class="btn primary" href="https://github.com/bandeira-tech/b3nd-core" target="_blank" rel="noreferrer noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        open the repo<span class="try-arrow">→</span>
-      </a>
-      <a class="btn secondary" href="https://deploy.workers.cloudflare.com/?url=https://github.com/bandeira-tech/b3nd-core" target="_blank" rel="noreferrer noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5088 16.8447c.1475-.5068.0908-.9707-.1553-1.3154-.2246-.3164-.6045-.499-1.0615-.5205l-8.6592-.1123a.1559.1559 0 0 1-.1333-.0713c-.0283-.042-.0351-.0986-.021-.1553.0278-.084.1123-.1484.2036-.1562l8.7359-.1123c1.0351-.0489 2.1601-.8868 2.5537-1.9136l.499-1.3013c.0215-.0561.0293-.1128.0147-.168-.5625-2.5463-2.835-4.4453-5.5499-4.4453-2.5039 0-4.6284 1.6177-5.3876 3.8614-.4927-.3658-1.1187-.5625-1.794-.499-1.2026.119-2.1665 1.083-2.2861 2.2856-.0283.31-.0069.6128.0635.894C1.5683 13.171 0 14.7754 0 16.752c0 .1748.0142.3515.0352.5273.0141.083.0844.1475.1689.1475h15.9814c.0909 0 .1758-.0645.2032-.1553l.12-.4268zm2.7568-5.5634c-.0771 0-.1611 0-.2383.0112-.0566 0-.1054.0415-.127.0976l-.3378 1.1744c-.1475.5068-.0918.9707.1543 1.3164.2256.3164.6055.498 1.0625.5195l1.8437.1133c.0557 0 .1055.0263.1329.0703.0283.043.0351.1074.0214.1562-.0283.084-.1132.1485-.204.1553l-1.921.1123c-1.041.0488-2.1582.8867-2.5527 1.914l-.1406.3585c-.0283.0713.0215.1416.0986.1416h6.5977c.0771 0 .1474-.0489.169-.126.1122-.4082.1757-.837.1757-1.2803 0-2.6025-2.125-4.727-4.7344-4.727"/></svg>
-        deploy on cloudflare<span class="try-arrow">→</span>
-      </a>
-      <a class="btn secondary" href="https://vercel.com/new/clone?repository-url=https://github.com/bandeira-tech/b3nd-core" target="_blank" rel="noreferrer noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 1.608 12 20.784H0Z"/></svg>
-        deploy on vercel<span class="try-arrow">→</span>
-      </a>
+    <div class="try-stack">
+
+      <div class="try-block">
+        <span class="try-block-label">deploy</span>
+        <div class="try-buttons">
+          <a class="btn primary" href="https://deploy.workers.cloudflare.com/?url=https://github.com/rafb43/b3nd-free/tree/main/src/cloudflare" target="_blank" rel="noreferrer noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.5088 16.8447c.1475-.5068.0908-.9707-.1553-1.3154-.2246-.3164-.6045-.499-1.0615-.5205l-8.6592-.1123a.1559.1559 0 0 1-.1333-.0713c-.0283-.042-.0351-.0986-.021-.1553.0278-.084.1123-.1484.2036-.1562l8.7359-.1123c1.0351-.0489 2.1601-.8868 2.5537-1.9136l.499-1.3013c.0215-.0561.0293-.1128.0147-.168-.5625-2.5463-2.835-4.4453-5.5499-4.4453-2.5039 0-4.6284 1.6177-5.3876 3.8614-.4927-.3658-1.1187-.5625-1.794-.499-1.2026.119-2.1665 1.083-2.2861 2.2856-.0283.31-.0069.6128.0635.894C1.5683 13.171 0 14.7754 0 16.752c0 .1748.0142.3515.0352.5273.0141.083.0844.1475.1689.1475h15.9814c.0909 0 .1758-.0645.2032-.1553l.12-.4268zm2.7568-5.5634c-.0771 0-.1611 0-.2383.0112-.0566 0-.1054.0415-.127.0976l-.3378 1.1744c-.1475.5068-.0918.9707.1543 1.3164.2256.3164.6055.498 1.0625.5195l1.8437.1133c.0557 0 .1055.0263.1329.0703.0283.043.0351.1074.0214.1562-.0283.084-.1132.1485-.204.1553l-1.921.1123c-1.041.0488-2.1582.8867-2.5527 1.914l-.1406.3585c-.0283.0713.0215.1416.0986.1416h6.5977c.0771 0 .1474-.0489.169-.126.1122-.4082.1757-.837.1757-1.2803 0-2.6025-2.125-4.727-4.7344-4.727"/></svg>
+            deploy on cloudflare<span class="try-arrow">→</span>
+          </a>
+          <a class="btn primary" href="https://vercel.com/new/clone?repository-url=https://github.com/rafb43/b3nd-free/tree/main/src/vercel" target="_blank" rel="noreferrer noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 1.608 12 20.784H0Z"/></svg>
+            deploy on vercel<span class="try-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="try-block">
+        <span class="try-block-label">check</span>
+        <div class="try-buttons">
+          <a class="btn secondary" href="https://github.com/rafb43/b3nd-free" target="_blank" rel="noreferrer noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            open the source on github<span class="try-arrow">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="try-block">
+        <span class="try-block-label">install</span>
+        <div class="install-tabs">
+          <input type="radio" name="install-tab" id="tab-web">
+          <input type="radio" name="install-tab" id="tab-backend" checked>
+          <input type="radio" name="install-tab" id="tab-worker">
+
+          <div class="install-tab-labels">
+            <label for="tab-web">web</label>
+            <label for="tab-backend">backend server</label>
+            <label for="tab-worker">background worker</label>
+          </div>
+
+          <div class="install-tab-panels">
+            <div class="install-panel" data-tab="web">
+<pre class="code">$ npx jsr add @bandeira-tech/b3nd-core @bandeira-tech/b3nd-move</pre>
+<pre class="code"><code>import { connection, FunctionalClient, Rig } from "@bandeira-tech/b3nd-core";
+import { httpClient } from "@bandeira-tech/b3nd-move/http";
+
+const local = new FunctionalClient({
+  receive: (msgs) =&gt; {
+    for (const [uri, payload] of msgs)
+      localStorage.setItem(uri, JSON.stringify(payload));
+    return Promise.resolve(msgs.map(() =&gt; ({ accepted: true })));
+  },
+  read: (uris) =&gt; Promise.resolve(
+    uris.flatMap((u) =&gt; {
+      const raw = localStorage.getItem(u);
+      return raw ? [[u, JSON.parse(raw)]] : [];
+    }),
+  ),
+});
+
+const rig = new Rig({
+  routes: {
+    receive: [connection(local, ["local://**"])],
+    read:    [connection(local, ["local://**"])],
+    send:    [connection(httpClient("https://api.example.com"), ["api://**"])],
+  },
+});
+
+await rig.receive([["local://notes/hello", { text: "hi" }]]);</code></pre>
+            </div>
+
+            <div class="install-panel" data-tab="backend">
+<pre class="code">$ deno add jsr:@bandeira-tech/b3nd-core jsr:@bandeira-tech/b3nd-move</pre>
+<pre class="code"><code>import { connection, FunctionalClient, Rig } from "@bandeira-tech/b3nd-core";
+import { httpService } from "@bandeira-tech/b3nd-move/http";
+import { mcpService }  from "@bandeira-tech/b3nd-move/mcp";
+
+const store = new Map&lt;string, unknown&gt;();
+
+const memory = new FunctionalClient({
+  receive: (msgs) =&gt; {
+    for (const [uri, payload] of msgs) {
+      console.log("received:", uri, payload);
+      store.set(uri, payload);
+    }
+    return Promise.resolve(msgs.map(() =&gt; ({ accepted: true })));
+  },
+  read: (uris) =&gt; Promise.resolve(
+    uris.flatMap((u) =&gt; store.has(u) ? [[u, store.get(u)]] : []),
+  ),
+});
+
+const rig = new Rig({
+  routes: {
+    receive: [connection(memory, ["**"])],
+    read:    [connection(memory, ["**"])],
+  },
+});
+
+httpService(rig).listen({ port: 8080 });
+mcpService(rig).serve();</code></pre>
+            </div>
+
+            <div class="install-panel" data-tab="worker">
+<pre class="code">$ deno add jsr:@bandeira-tech/b3nd-core jsr:@bandeira-tech/b3nd-move</pre>
+<pre class="code"><code>import { connection, Rig } from "@bandeira-tech/b3nd-core";
+import { mcpClient } from "@bandeira-tech/b3nd-move/mcp";
+
+const upstream = mcpClient("https://network.example");
+
+const rig = new Rig({
+  routes: {
+    observe: [connection(upstream, ["event://**"])],
+    read:    [connection(upstream, ["event://**"])],
+  },
+});
+
+const ac = new AbortController();
+for await (const uris of rig.observe(["event://**"], ac.signal)) {
+  const events = await rig.read(uris);
+  for (const [uri, payload] of events) {
+    await fetch("https://hooks.slack.com/...", {
+      method: "POST",
+      body: JSON.stringify({ text: `${uri}: ${JSON.stringify(payload)}` }),
+    });
+  }
+}</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
