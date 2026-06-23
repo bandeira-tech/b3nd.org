@@ -1057,28 +1057,25 @@
 
           <div class="install-tab-panels">
             <div class="install-panel" data-tab="web">
-<pre class="code">$ npx jsr add @bandeira-tech/b3nd-core @bandeira-tech/b3nd-move</pre>
-<pre class="code"><code>import { connection, FunctionalClient, Rig } from "@bandeira-tech/b3nd-core";
+<pre class="code">$ npx jsr add @bandeira-tech/b3nd-core @bandeira-tech/b3nd-save @bandeira-tech/b3nd-move</pre>
+<pre class="code"><code>import { connection, Rig } from "@bandeira-tech/b3nd-core";
+import { LocalStorageStore } from "@bandeira-tech/b3nd-save/localstorage";
+import { passThroughRecord, SaveClient } from "@bandeira-tech/b3nd-save/clients";
+import { TYPE_TAGS } from "@bandeira-tech/b3nd-save/entity";
 import { httpClient } from "@bandeira-tech/b3nd-move/http";
 
-const local = new FunctionalClient({
-  receive: (msgs) =&gt; {
-    for (const [uri, payload] of msgs)
-      localStorage.setItem(uri, JSON.stringify(payload));
-    return Promise.resolve(msgs.map(() =&gt; ({ accepted: true })));
-  },
-  read: (uris) =&gt; Promise.resolve(
-    uris.flatMap((u) =&gt; {
-      const raw = localStorage.getItem(u);
-      return raw ? [[u, JSON.parse(raw)]] : [];
-    }),
-  ),
-});
+const notes = {
+  name: "notes",
+  fields: [{ name: "text", type: [TYPE_TAGS.STRING] }],
+};
+
+const save = new SaveClient(passThroughRecord, notes, new LocalStorageStore());
+await save.init();
 
 const rig = new Rig({
   routes: {
-    receive: [connection(local, ["local://**"])],
-    read:    [connection(local, ["local://**"])],
+    receive: [connection(save, ["local://**"])],
+    read:    [connection(save, ["local://**"])],
     send:    [connection(httpClient("https://api.example.com"), ["api://**"])],
   },
 });
@@ -1087,30 +1084,36 @@ await rig.receive([["local://notes/hello", { text: "hi" }]]);</code></pre>
             </div>
 
             <div class="install-panel" data-tab="backend">
-<pre class="code">$ deno add jsr:@bandeira-tech/b3nd-core jsr:@bandeira-tech/b3nd-move</pre>
+<pre class="code">$ deno add jsr:@bandeira-tech/b3nd-core jsr:@bandeira-tech/b3nd-save jsr:@bandeira-tech/b3nd-move</pre>
 <pre class="code"><code>import { connection, FunctionalClient, Rig } from "@bandeira-tech/b3nd-core";
+import { MemoryStore } from "@bandeira-tech/b3nd-save/memory";
+import { passThroughRecord, SaveClient } from "@bandeira-tech/b3nd-save/clients";
+import { TYPE_TAGS } from "@bandeira-tech/b3nd-save/entity";
 import { httpService } from "@bandeira-tech/b3nd-move/http";
 import { mcpService }  from "@bandeira-tech/b3nd-move/mcp";
 
-const store = new Map&lt;string, unknown&gt;();
+const messages = {
+  name: "messages",
+  fields: [{ name: "payload", type: [TYPE_TAGS.JSON] }],
+};
 
-const memory = new FunctionalClient({
+const save = new SaveClient(passThroughRecord, messages, new MemoryStore());
+await save.init();
+
+const log = new FunctionalClient({
   receive: (msgs) =&gt; {
-    for (const [uri, payload] of msgs) {
-      console.log("received:", uri, payload);
-      store.set(uri, payload);
-    }
+    for (const [uri, payload] of msgs) console.log("received:", uri, payload);
     return Promise.resolve(msgs.map(() =&gt; ({ accepted: true })));
   },
-  read: (uris) =&gt; Promise.resolve(
-    uris.flatMap((u) =&gt; store.has(u) ? [[u, store.get(u)]] : []),
-  ),
 });
 
 const rig = new Rig({
   routes: {
-    receive: [connection(memory, ["**"])],
-    read:    [connection(memory, ["**"])],
+    receive: [
+      connection(log,  ["**"]),
+      connection(save, ["**"]),
+    ],
+    read: [connection(save, ["**"])],
   },
 });
 
