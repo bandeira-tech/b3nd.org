@@ -476,19 +476,23 @@
     .trinity-row{grid-template-columns:1fr;gap:6px;padding:16px 0}
   }
 
-  /* SHELL-CANDIDATE 02b — .simple-rows
-     A grid of (verb · chips) rows showing what each verb can reach
-     for. Verb in mono accent, chips in mono dim with rule border.
-     Used on the "simple" panel to make the surface area concrete
-     without prose. */
-  .simple-rows{display:flex;flex-direction:column;margin-top:16px}
+  /* SHELL-CANDIDATE 02b — .simple-grid
+     Two side-by-side columns of (verb · chips) rows. Verb in mono
+     accent, large; chips in mono dim with rule border. Used on the
+     "simple" panel to make the surface area concrete without prose.
+     Mobile collapses to one column, all rows stacked. */
+  .simple-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:0 48px;
+    margin-top:16px;max-width:920px;
+  }
+  .simple-col{display:flex;flex-direction:column}
   .simple-row{
-    display:grid;grid-template-columns:140px 1fr;gap:32px;
+    display:grid;grid-template-columns:115px 1fr;gap:20px;
     align-items:center;padding:18px 0;border-top:1px solid var(--rule);
   }
   .simple-row:last-child{border-bottom:1px solid var(--rule)}
   .simple-verb{
-    font-family:var(--mono);font-size:clamp(20px,2.4vw,28px);
+    font-family:var(--mono);font-size:clamp(20px,2.2vw,26px);
     font-weight:600;color:var(--accent);letter-spacing:-.01em;
   }
   .simple-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -499,12 +503,11 @@
     letter-spacing:.04em;white-space:nowrap;
   }
   .simple-chip svg{width:11px;height:11px;flex-shrink:0;color:var(--ink-dim)}
-  .simple-sep{
-    font:10px/1 var(--mono);color:var(--ink-mute);
-    letter-spacing:.16em;text-transform:uppercase;
-    margin:0 4px 0 6px;
+  @media (max-width:880px){
+    .simple-grid{grid-template-columns:1fr;gap:0}
+    .simple-row{grid-template-columns:115px 1fr}
   }
-  @media (max-width:680px){
+  @media (max-width:520px){
     .simple-row{grid-template-columns:1fr;gap:10px;padding:14px 0}
   }
 
@@ -651,87 +654,95 @@
     <h2 class="h-1">Building is the easy part.</h2>
     <p class="lede">Pick a verb. Pick where it goes. The wiring is already here — what's left is the app.</p>
 
-    <div class="simple-rows">
-      <div class="simple-row">
-        <span class="simple-verb">show</span>
-        <div class="simple-chips">
-          <span class="simple-chip">web</span>
-          <span class="simple-chip">cli</span>
-          <span class="simple-chip">mobile</span>
-          <span class="simple-chip">agent skill</span>
-          <span class="simple-sep">free on</span>
-          <span class="simple-chip">cloudflare</span>
-          <span class="simple-chip">vercel</span>
-          <span class="simple-chip">digital ocean</span>
-          <span class="simple-chip">hetzner</span>
+    <div class="simple-grid">
+      <div class="simple-col">
+        <div class="simple-row">
+          <span class="simple-verb">receive</span>
+          <div class="simple-chips">
+            <span class="simple-chip">.json</span>
+            <span class="simple-chip">.jpg</span>
+            <span class="simple-chip">.mov</span>
+            <span class="simple-chip">.proto</span>
+          </div>
+        </div>
+        <div class="simple-row">
+          <span class="simple-verb">read</span>
+          <div class="simple-chips">
+            <span class="simple-chip" title="by URI">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.5 1.5h5L12.5 5.5v9h-9z"/><path d="M8.5 1.5V5.5h4"/></svg>
+              doc
+            </span>
+            <span class="simple-chip" title="by query">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M2 12V3.5h5L9 5.5v0.5"/><path d="M5 14V5.5h6L13 7.5v6.5z"/></svg>
+              docs
+            </span>
+            <span class="simple-chip" title="by search">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="4.2"/><line x1="10.3" y1="10.3" x2="14" y2="14"/></svg>
+              search
+            </span>
+            <span class="simple-chip" title="by URI pattern">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2.5"/><circle cx="8" cy="8" r="0.6" fill="currentColor" stroke="none"/></svg>
+              target
+            </span>
+          </div>
+        </div>
+        <div class="simple-row">
+          <span class="simple-verb">observe</span>
+          <div class="simple-chips">
+            <span class="simple-chip">SSE</span>
+            <span class="simple-chip">path/**</span>
+            <span class="simple-chip">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M4 11V7c0-2.2 1.8-4 4-4s4 1.8 4 4v4l1 1H3z"/><path d="M6.8 13.5c0 0.7 0.5 1.2 1.2 1.2s1.2-0.5 1.2-1.2"/></svg>
+              notify
+            </span>
+          </div>
+        </div>
+        <div class="simple-row">
+          <span class="simple-verb">show</span>
+          <div class="simple-chips">
+            <span class="simple-chip">web</span>
+            <span class="simple-chip">cli</span>
+            <span class="simple-chip">mobile</span>
+            <span class="simple-chip">agent skill</span>
+          </div>
         </div>
       </div>
-      <div class="simple-row">
-        <span class="simple-verb">receive</span>
-        <div class="simple-chips">
-          <span class="simple-chip">.json</span>
-          <span class="simple-chip">.jpg</span>
-          <span class="simple-chip">.mov</span>
-          <span class="simple-chip">.proto</span>
+      <div class="simple-col">
+        <div class="simple-row">
+          <span class="simple-verb">move</span>
+          <div class="simple-chips">
+            <span class="simple-chip">mcp</span>
+            <span class="simple-chip">http</span>
+            <span class="simple-chip">ws</span>
+            <span class="simple-chip">grpc</span>
+          </div>
         </div>
-      </div>
-      <div class="simple-row">
-        <span class="simple-verb">read</span>
-        <div class="simple-chips">
-          <span class="simple-chip" title="by URI">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M3.5 1.5h5L12.5 5.5v9h-9z"/><path d="M8.5 1.5V5.5h4"/></svg>
-            doc
-          </span>
-          <span class="simple-chip" title="by query">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><path d="M2 12V3.5h5L9 5.5v0.5"/><path d="M5 14V5.5h6L13 7.5v6.5z"/></svg>
-            docs
-          </span>
-          <span class="simple-chip" title="by search">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="7" cy="7" r="4.2"/><line x1="10.3" y1="10.3" x2="14" y2="14"/></svg>
-            search
-          </span>
-          <span class="simple-chip" title="by URI pattern">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2.5"/><circle cx="8" cy="8" r="0.6" fill="currentColor" stroke="none"/></svg>
-            target
-          </span>
+        <div class="simple-row">
+          <span class="simple-verb">save</span>
+          <div class="simple-chips">
+            <span class="simple-chip">postgres</span>
+            <span class="simple-chip">mongodb</span>
+            <span class="simple-chip">posix</span>
+            <span class="simple-chip">sqlite</span>
+          </div>
         </div>
-      </div>
-      <div class="simple-row">
-        <span class="simple-verb">observe</span>
-        <div class="simple-chips">
-          <span class="simple-chip">SSE</span>
-          <span class="simple-chip">path/**</span>
-          <span class="simple-chip">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"><path d="M4 11V7c0-2.2 1.8-4 4-4s4 1.8 4 4v4l1 1H3z"/><path d="M6.8 13.5c0 0.7 0.5 1.2 1.2 1.2s1.2-0.5 1.2-1.2"/></svg>
-            notify
-          </span>
+        <div class="simple-row">
+          <span class="simple-verb">send</span>
+          <div class="simple-chips">
+            <span class="simple-chip">resend</span>
+            <span class="simple-chip">whatsapp</span>
+            <span class="simple-chip">claude</span>
+            <span class="simple-chip">openai</span>
+          </div>
         </div>
-      </div>
-      <div class="simple-row">
-        <span class="simple-verb">move</span>
-        <div class="simple-chips">
-          <span class="simple-chip">mcp</span>
-          <span class="simple-chip">http</span>
-          <span class="simple-chip">ws</span>
-          <span class="simple-chip">grpc</span>
-        </div>
-      </div>
-      <div class="simple-row">
-        <span class="simple-verb">save</span>
-        <div class="simple-chips">
-          <span class="simple-chip">postgres</span>
-          <span class="simple-chip">mongodb</span>
-          <span class="simple-chip">posix</span>
-          <span class="simple-chip">sqlite</span>
-        </div>
-      </div>
-      <div class="simple-row">
-        <span class="simple-verb">send</span>
-        <div class="simple-chips">
-          <span class="simple-chip">resend</span>
-          <span class="simple-chip">whatsapp</span>
-          <span class="simple-chip">claude</span>
-          <span class="simple-chip">openai</span>
+        <div class="simple-row">
+          <span class="simple-verb">free</span>
+          <div class="simple-chips">
+            <span class="simple-chip">cloudflare</span>
+            <span class="simple-chip">vercel</span>
+            <span class="simple-chip">digital ocean</span>
+            <span class="simple-chip">hetzner</span>
+          </div>
         </div>
       </div>
     </div>
