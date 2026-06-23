@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#050807" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#FFFCF8" media="(prefers-color-scheme: light)">
 <title>b3nd · digital spellcraft — capture once, use it everywhere</title>
-<meta name="description" content="Capture once. Use it everywhere. Build the backend once; ship throwaway apps on top forever. Six verbs, one Rig, ten storage backends. The data plane stays. b3nd is digital spellcraft.">
+<meta name="description" content="Capture once. Use it everywhere. Build the backend once; ship throwaway apps on top forever. Six verbs, one Rig, ten storage backends. Your information stays. b3nd is digital spellcraft.">
 
 <meta property="og:title" content="b3nd is digital spellcraft.">
 <meta property="og:description" content="One data substrate under every app you ship with AI. Six verbs, one Rig, ten storage backends. Built by bandeira.tech.">
@@ -34,7 +34,7 @@
       "@id": "https://b3nd.org/#software",
       "name": "b3nd",
       "alternateName": "b3nd is digital spellcraft.",
-      "description": "b3nd is a data substrate for apps in the age of agents. A small uniform surface — move, save, send at the protocol layer; receive, read, observe at the app layer — over a public network running today. One Rig under every app you ship, including the ones you build with AI.",
+      "description": "b3nd is the information layer under the apps you build. Six small verbs — move, save, send at the protocol layer; receive, read, observe at the app layer. Build the backend once; ship apps on top forever. Capture once; use it everywhere.",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Cross-platform",
       "url": "https://b3nd.org",
@@ -604,106 +604,67 @@
       <a class="anchor" href="#shape">#shape</a>
     </div>
     <h2 class="h-1">Capture once. Use it everywhere.</h2>
-    <p class="lede">Build the backend once. Ship apps on top forever — throw them away when you want. The data plane underneath stays yours.</p>
+    <p class="lede">Build the backend once. Ship apps on top forever — throw them away when you want. The information underneath stays yours.</p>
   </section>
 
-  <!-- ===================== TIER · SURFACE ===================== -->
+  <!-- ===================== TIER · FLOW ===================== -->
 
-  <!-- 02 · PROTOCOL SURFACE -->
-  <section class="panel" id="protocol" data-tier="surface" data-name="protocol">
+  <!-- 02 · SIMPLE — collapsed from former protocol/app/symmetry panels -->
+  <section class="panel" id="simple" data-tier="flow" data-name="simple">
     <div class="panel-head">
       <span class="num">02</span>
-      <span class="tier">surface</span><span class="sep">/</span><span class="name">protocol</span>
-      <a class="anchor" href="#protocol">#protocol</a>
+      <span class="tier">flow</span><span class="sep">/</span><span class="name">simple</span>
+      <a class="anchor" href="#simple">#simple</a>
     </div>
-    <h2 class="h-2">The protocol surface — what happens to data.</h2>
-    <p class="lede">Three verbs for the data. The same three on every transport, in every store.</p>
-    <ul class="trinity">
-      <li class="trinity-row">
-        <span class="trinity-verb">move</span>
-        <span class="trinity-line">Data goes where you ask. HTTP, WebSocket, gRPC, MCP — one surface.</span>
-      </li>
-      <li class="trinity-row">
-        <span class="trinity-verb">save</span>
-        <span class="trinity-line">Data stays where you ask. Memory, Postgres, SQLite, Mongo, Elasticsearch, S3, FS, IPFS, the browser — one contract.</span>
-      </li>
-      <li class="trinity-row">
-        <span class="trinity-verb">send</span>
-        <span class="trinity-line">Data leaves where you ask. To the systems you already run.</span>
-      </li>
-    </ul>
+    <h2 class="h-1">Six words. Every app you'll build.</h2>
+    <p class="lede">What you do with information. What runs underneath to deliver it. The problem is small — that's why one piece of information runs many apps.</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:560px;margin-top:8px">
+      <div>
+        <span class="h-3" style="display:block;margin-bottom:20px">you</span>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;font-family:var(--mono);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--accent);letter-spacing:-.01em">
+          <li>receive</li>
+          <li>read</li>
+          <li>observe</li>
+        </ul>
+      </div>
+      <div>
+        <span class="h-3" style="display:block;margin-bottom:20px">your app</span>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;font-family:var(--mono);font-size:clamp(22px,3vw,30px);font-weight:600;color:var(--accent);letter-spacing:-.01em">
+          <li>move</li>
+          <li>save</li>
+          <li>send</li>
+        </ul>
+      </div>
+    </div>
   </section>
 
-  <!-- 03 · APP SURFACE -->
-  <section class="panel" id="app" data-tier="surface" data-name="app">
+  <!-- 03 · SPINE — many apps, one shared information -->
+  <section class="panel" id="spine" data-tier="flow" data-name="spine">
     <div class="panel-head">
       <span class="num">03</span>
-      <span class="tier">surface</span><span class="sep">/</span><span class="name">app</span>
-      <a class="anchor" href="#app">#app</a>
-    </div>
-    <h2 class="h-2">The app surface — what your app does on top.</h2>
-    <p class="lede">Three verbs for your code. The same three when your agent writes that code for you.</p>
-    <ul class="trinity">
-      <li class="trinity-row">
-        <span class="trinity-verb">receive</span>
-        <span class="trinity-line">Take a message in. From a user, an agent, a peer.</span>
-      </li>
-      <li class="trinity-row">
-        <span class="trinity-verb">read</span>
-        <span class="trinity-line">Look at data you have. By URI, by query, by stream.</span>
-      </li>
-      <li class="trinity-row">
-        <span class="trinity-verb">observe</span>
-        <span class="trinity-line">Watch data change. React when it does.</span>
-      </li>
-    </ul>
-  </section>
-
-  <!-- 04 · SYMMETRY -->
-  <section class="panel" id="symmetry" data-tier="surface" data-name="symmetry">
-    <div class="panel-head">
-      <span class="num">04</span>
-      <span class="tier">surface</span><span class="sep">/</span><span class="name">symmetry</span>
-      <a class="anchor" href="#symmetry">#symmetry</a>
-    </div>
-    <div class="manifesto">
-      <p>The same <em>six verbs</em>.</p>
-      <p>In-process. Over HTTP, WebSocket, gRPC, MCP.</p>
-      <p>Across <em>ten storage backends</em>.</p>
-      <p>For your users <em>and</em> for their agents.</p>
-    </div>
-    <p class="manifesto-coda">
-      Your agent reads what your user reads. Through the same surface, signed by the same key.
-      The asymmetries you used to plan around — gone.
-    </p>
-  </section>
-
-  <!-- 05 · SPINE — many surfaces, one substrate -->
-  <section class="panel" id="spine" data-tier="surface" data-name="spine">
-    <div class="panel-head">
-      <span class="num">05</span>
-      <span class="tier">surface</span><span class="sep">/</span><span class="name">spine</span>
+      <span class="tier">flow</span><span class="sep">/</span><span class="name">spine</span>
       <a class="anchor" href="#spine">#spine</a>
     </div>
-    <h2 class="h-2">Many surfaces. One spine.</h2>
+    <h2 class="h-2">Many apps. One spine.</h2>
     <div class="manifesto">
       <p>Ship an experience tonight.</p>
       <p>Ship another <em>beside</em> it tomorrow.</p>
       <p>Let the agent ship the next.</p>
-      <p>They share the substrate.</p>
+      <p>Same information underneath.</p>
     </div>
     <p class="manifesto-coda">
-      The store, the wire, the keys, the audit trail, the access rules — already there, already symmetric, already yours. Auth, encryption, replication: properties of the surface, not bolt-ons.
+      The store, the wire, the keys, the audit trail, the access rules — already there, already symmetric, already yours. Auth, encryption, replication: built in, not bolted on.
       Production-ready isn't a deploy step. It's where you start.
     </p>
   </section>
 
   <!-- ===================== TIER · PROOF ===================== -->
 
-  <!-- 06 · RUNNING -->
+  <!-- 04 · RUNNING -->
   <section class="panel" id="running" data-tier="proof" data-name="running">
     <div class="panel-head">
-      <span class="num">06</span>
+      <span class="num">04</span>
       <span class="tier">proof</span><span class="sep">/</span><span class="name">running</span>
       <a class="anchor" href="#running">#running</a>
     </div>
@@ -741,14 +702,14 @@
     </div>
   </section>
 
-  <!-- 07 · SKETCH — what the surface actually looks like, in code -->
+  <!-- 05 · SKETCH — the whole shape, in five lines of code -->
   <section class="panel" id="sketch" data-tier="proof" data-name="sketch">
     <div class="panel-head">
-      <span class="num">07</span>
+      <span class="num">05</span>
       <span class="tier">proof</span><span class="sep">/</span><span class="name">sketch</span>
       <a class="anchor" href="#sketch">#sketch</a>
     </div>
-    <h2 class="h-2">The whole surface, in five lines.</h2>
+    <h2 class="h-2">The whole shape, in five lines.</h2>
     <p class="lede">One import. One Rig. Three verbs you call. The protocol-side three live in the routes. If your agent has ever written against an SDK, it already knows this shape.</p>
 <pre class="code"><code>import { Rig } from "@bandeira-tech/b3nd-core";
 
@@ -757,19 +718,19 @@ const rig = new Rig({ routes: { /* move · save · send */ } });
 await rig.receive([[uri, payload]]);
 const [data] = await rig.read([uri]);
 for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
-    <p class="mute">deno · node · browser · agent · all the same surface.</p>
+    <p class="mute">deno · node · browser · agent · all the same shape.</p>
   </section>
 
   <!-- 08 · TEAMS -->
   <section class="panel" id="teams" data-tier="proof" data-name="for teams">
     <div class="panel-head">
-      <span class="num">08</span>
+      <span class="num">06</span>
       <span class="tier">proof</span><span class="sep">/</span><span class="name">for teams</span>
       <a class="anchor" href="#teams">#teams</a>
     </div>
     <span class="h-3">AI-Native Data-Oriented Architecture</span>
     <h2 class="h-1">The platform cake folds into one Rig.</h2>
-    <p class="lede">Queue, store, broker, observer, identity, access — collapsed into a single uniform surface. The integration layer doesn't get smaller on <b-3>b3nd</b-3>. It stops existing.</p>
+    <p class="lede">Queue, store, broker, observer, identity, access — collapsed into one uniform shape. The integration layer doesn't get smaller on <b-3>b3nd</b-3>. It stops existing.</p>
     <div>
       <a class="btn secondary" href="/teams">for teams →</a>
     </div>
@@ -778,7 +739,7 @@ for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
   <!-- 09 · OWNERSHIP -->
   <section class="panel" id="ownership" data-tier="proof" data-name="ownership">
     <div class="panel-head">
-      <span class="num">09</span>
+      <span class="num">07</span>
       <span class="tier">proof</span><span class="sep">/</span><span class="name">ownership</span>
       <a class="anchor" href="#ownership">#ownership</a>
     </div>
@@ -802,7 +763,7 @@ for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
   <!-- 10 · AUDIENCES -->
   <section class="panel" id="audiences" data-tier="who" data-name="audiences">
     <div class="panel-head">
-      <span class="num">10</span>
+      <span class="num">08</span>
       <span class="tier">who</span><span class="sep">/</span><span class="name">audiences</span>
       <a class="anchor" href="#audiences">#audiences</a>
     </div>
@@ -811,18 +772,18 @@ for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
     <div class="card-grid dense">
       <article class="card">
         <span class="card-tag">builders shipping with ai</span>
-        <span class="card-title">You ship many surfaces. They share a spine.</span>
-        <span class="card-desc">Every prompt-built app, every late-night experiment, every demo that survives the weekend — they land on the same substrate. Your next surface inherits everything the last one earned.</span>
+        <span class="card-title">You ship many apps. They share one spine.</span>
+        <span class="card-desc">Every prompt-built app, every late-night experiment, every demo that survives the weekend — they land on the same information. Your next app inherits everything the last one earned.</span>
       </article>
       <article class="card">
         <span class="card-tag">new devs · vibe coders · prompt-first</span>
         <span class="card-title">You want the web to feel direct again.</span>
-        <span class="card-desc">Prompt the app. Ship the system. Your agent and you read through the same surface, signed by the same key.</span>
+        <span class="card-desc">Prompt the app. Ship the system. Your agent and you read through the same shape, signed by the same key.</span>
       </article>
       <article class="card">
         <span class="card-tag">architects · ops</span>
         <span class="card-title">The integration layer was a job. Now it isn't one.</span>
-        <span class="card-desc">Queue, store, broker, observer — they used to be components you composed. They become operations of one uniform surface. The boilerplate doesn't shrink. It stops existing.</span>
+        <span class="card-desc">Queue, store, broker, observer — they used to be components you composed. They become operations of one uniform shape. The boilerplate doesn't shrink. It stops existing.</span>
       </article>
       <article class="card">
         <span class="card-tag">creators · attention workers</span>
@@ -837,7 +798,7 @@ for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
   <!-- 11 · COMMUNITY -->
   <section class="panel" id="community" data-tier="in" data-name="community">
     <div class="panel-head">
-      <span class="num">11</span>
+      <span class="num">09</span>
       <span class="tier">in</span><span class="sep">/</span><span class="name">community</span>
       <a class="anchor" href="#community">#community</a>
     </div>
