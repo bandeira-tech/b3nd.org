@@ -365,9 +365,24 @@
   .card .card-foot .arrow{color:var(--accent)}
 
   pre.code{
-    margin:0;padding:14px;background:var(--surface-raised);border:1px solid var(--rule);
+    margin:0;padding:14px;padding-right:64px;background:var(--surface-raised);border:1px solid var(--rule);
     border-radius:var(--r-3);font:12.5px/1.6 var(--mono);overflow:auto;color:var(--ink);
+    position:relative;
   }
+  pre.code .tk-cmt{color:var(--ink-mute)}
+  pre.code .tk-str{color:var(--accent)}
+  pre.code .tk-kw{color:var(--ink);font-weight:600}
+  pre.code .tk-typ{color:var(--ink-dim)}
+  pre.code .tk-num{color:var(--accent)}
+  pre.code .copy-btn{
+    position:absolute;top:8px;right:8px;
+    appearance:none;background:transparent;color:var(--ink-mute);
+    border:1px solid var(--rule);border-radius:4px;cursor:pointer;
+    font:10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;
+    padding:6px 10px;transition:color .15s, border-color .15s;
+  }
+  pre.code .copy-btn:hover{color:var(--ink);border-color:var(--accent-border)}
+  pre.code .copy-btn.copied{color:var(--accent);border-color:var(--accent-border)}
 
   /* ===== TABLET + DESKTOP (from shell) ========================== */
   .chrome-bot{display:none}
@@ -1566,6 +1581,85 @@ for await (const u of rig.observe([pat])) { /* react */ }</code></pre>
       update({ silent: true });
     }
     boot();
+  })();
+</script>
+
+<!-- ===================================================================
+     CODE BLOCK ENHANCERS — light TS/JS syntax highlighter + one-click
+     copy button on every <pre class="code">. Highlighter is a tiny
+     single-pass tokenizer (~40 LOC) covering comments, strings,
+     keywords, capitalized type identifiers, and numbers. Code without
+     a <code> child (shell prompts) is left untouched but still gets a
+     copy button.
+     =================================================================== -->
+<script>
+  (() => {
+    const KW = /\b(?:import|export|from|const|let|var|async|await|new|for|of|in|return|if|else|function|class|interface|type|true|false|null|undefined)\b/;
+    const STR = /`(?:[^`\\]|\\.)*`|"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/;
+    const CMT = /\/\/[^\n]*|\/\*[\s\S]*?\*\//;
+    const TYP = /\b[A-Z][a-zA-Z0-9_]*/;
+    const NUM = /\b\d+(?:\.\d+)?\b/;
+    const TOKENS = [
+      { type: 'cmt', re: CMT },
+      { type: 'str', re: STR },
+      { type: 'kw',  re: KW  },
+      { type: 'typ', re: TYP },
+      { type: 'num', re: NUM },
+    ];
+    const ALL = new RegExp(TOKENS.map(t => `(${t.re.source})`).join('|'), 'g');
+
+    function esc(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlight(code) {
+      let out = '';
+      let last = 0;
+      let m;
+      ALL.lastIndex = 0;
+      while ((m = ALL.exec(code)) !== null) {
+        if (m.index > last) out += esc(code.slice(last, m.index));
+        let typ = null;
+        for (let i = 1; i < m.length; i++) {
+          if (m[i] !== undefined) { typ = TOKENS[i - 1].type; break; }
+        }
+        out += `<span class="tk-${typ}">${esc(m[0])}</span>`;
+        last = m.index + m[0].length;
+      }
+      if (last < code.length) out += esc(code.slice(last));
+      return out;
+    }
+
+    function attachCopy(pre) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy-btn';
+      btn.textContent = 'copy';
+      btn.setAttribute('aria-label', 'copy code to clipboard');
+      pre.appendChild(btn);
+      btn.addEventListener('click', async () => {
+        const codeEl = pre.querySelector('code');
+        const text = (codeEl ? codeEl.textContent : pre.textContent.replace(/copy$|copied$/, '')).trim();
+        try {
+          await navigator.clipboard.writeText(text);
+          btn.textContent = 'copied';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = 'copy';
+            btn.classList.remove('copied');
+          }, 1400);
+        } catch (e) {
+          btn.textContent = 'failed';
+          setTimeout(() => { btn.textContent = 'copy'; }, 1400);
+        }
+      });
+    }
+
+    document.querySelectorAll('pre.code').forEach(pre => {
+      const codeEl = pre.querySelector('code');
+      if (codeEl) codeEl.innerHTML = highlight(codeEl.textContent);
+      attachCopy(pre);
+    });
   })();
 </script>
 
