@@ -482,33 +482,37 @@
      "simple" panel to make the surface area concrete without prose.
      Mobile collapses to one column, all rows stacked. */
   .simple-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:0 48px;
-    margin-top:16px;max-width:920px;
+    display:grid;grid-template-columns:1fr 1fr;gap:0 40px;
+    margin-top:16px;max-width:960px;
   }
   .simple-col{display:flex;flex-direction:column}
   .simple-row{
-    display:grid;grid-template-columns:115px 1fr;gap:20px;
-    align-items:center;padding:18px 0;border-top:1px solid var(--rule);
+    display:grid;grid-template-columns:105px 1fr;gap:16px;
+    align-items:center;padding:16px 0;border-top:1px solid var(--rule);
   }
   .simple-row:last-child{border-bottom:1px solid var(--rule)}
   .simple-verb{
     font-family:var(--mono);font-size:clamp(20px,2.2vw,26px);
     font-weight:600;color:var(--accent);letter-spacing:-.01em;
   }
-  .simple-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .simple-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:flex-start}
   .simple-chip{
-    display:inline-flex;align-items:center;gap:5px;
-    padding:5px 9px;border:1px solid var(--rule);border-radius:6px;
-    font:11px/1.2 var(--mono);color:var(--ink-dim);
-    letter-spacing:.04em;white-space:nowrap;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:6px;width:72px;height:80px;padding:8px 6px;
+    border:1px solid var(--rule);border-radius:8px;
+    font:10px/1.25 var(--mono);color:var(--ink-dim);
+    letter-spacing:.04em;text-align:center;
+    overflow-wrap:break-word;hyphens:auto;
+    transition:border-color .15s, color .15s;
   }
-  .simple-chip svg{width:11px;height:11px;flex-shrink:0;color:var(--ink-dim)}
+  .simple-chip:hover{border-color:var(--accent-border);color:var(--ink)}
+  .simple-chip svg{width:18px;height:18px;flex-shrink:0;color:var(--ink-dim)}
   @media (max-width:880px){
     .simple-grid{grid-template-columns:1fr;gap:0}
-    .simple-row{grid-template-columns:115px 1fr}
   }
   @media (max-width:520px){
     .simple-row{grid-template-columns:1fr;gap:10px;padding:14px 0}
+    .simple-chip{width:64px;height:72px}
   }
 
   /* SHELL-CANDIDATE 03 — .manifesto
